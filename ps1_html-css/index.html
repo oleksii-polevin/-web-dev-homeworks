@@ -23,8 +23,30 @@
       padding: 1rem;
     }
 
-    .floats {
+    .floats .column {
       overflow: hidden;
+      float: left;
+      width: 33.33%;
+    }
+
+
+    .blocks .column {
+      display: inline-block;
+      width: calc(100% / 3);
+
+    }
+
+    .flexbox {
+      display: flex;
+      flex-direction: row;
+    }
+    .flexbox .column {
+      flex-grow: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: auto auto auto;
     }
 
   </style>
@@ -36,9 +58,10 @@
     <div class="column" style="background-color: #3498db">3</div>
   </section>
   <section class="blocks">
-    <div class="column" style="background-color: #f39c12">1</div>
-    <div class="column" style="background-color: #d35400">2</div>
-    <div class="column" style="background-color: #c0392b">3</div>
+  <div class="column" style="background-color: #f39c12">1</div><!--
+  --><div class="column" style="background-color: #d35400">2</div><!--
+  --><div class="column" style="background-color: #c0392b">3</div><!--
+  -->
   </section>
   <section class="flexbox">
     <div class="column" style="background-color: #16a085">1</div>
