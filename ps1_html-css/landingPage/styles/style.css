@@ -57,8 +57,6 @@ header a:hover {
   padding: calc(100% / 10) calc(100% / 3);
   width: 30%;
   height: auto;
-
-
 }
 
 .section-1 .column {
@@ -92,9 +90,13 @@ header a:hover {
 }
 
 .icons i {
+  justify-content: center;
+  text-align: center;
   background-color: #1abc9c;
   border-radius: 50%;
-  padding: 10px;
+  padding:  15px 10px 3px 10px;
+  width: 40px;
+  height: 40px;
 }
 .icons, table {
   background-color: #ffffff;
@@ -107,6 +109,11 @@ table .heading {
 table .discription {
   font-family: monospace;
   font-size: 10px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+th, td {
   padding: 0 15px;
 }
 
