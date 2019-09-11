@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-
 }
 
 header {
@@ -52,9 +51,9 @@ header a:hover {
 }
 
 .section-1 img {
-  position: relative;
   z-index: 0;
-  padding: calc(100% / 10) calc(100% / 3);
+  align-self: center;
+  justify-self: center;
   width: 30%;
   height: auto;
 }
