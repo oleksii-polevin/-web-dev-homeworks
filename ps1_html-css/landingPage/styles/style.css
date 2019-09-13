@@ -45,17 +45,17 @@ header a:hover {
 .section-1 {
   color: #fff;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   background-color: #1abc9c;
 }
 
 .section-1 img {
   z-index: 0;
-  align-self: center;
   justify-self: center;
-  width: 30%;
-  height: auto;
+  align-self: center;
+  height: 75%;
+  width: auto;
 }
 
 .section-1 .column {
@@ -67,7 +67,7 @@ header a:hover {
 .section-1 a {
   padding: 5px;
   border: 1px solid white;
-  border-radius: 15px;
+  border-radius: 10px;
   color: #fff;
   font-size: 20px;
   text-decoration: none;
@@ -142,5 +142,15 @@ input {
 }
 
 input[type=button] {
+  font-size: 20px;
+  color: white;
+  background-color: #1abc9c;
+  border: 1px solid white;
+  border-radius: 10px;
   width: 150px;
+}
+
+input[type=button]:hover {
+  color: white;
+  background-color: red;
 }
