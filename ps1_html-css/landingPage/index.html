@@ -1,66 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Landing Page</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <link rel="stylesheet" href="styles/fontawesom/all.css">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Landing Page</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <!-- <link rel="stylesheet" href="styles/fontawesom/all.css"> -->
+  <script src="https://kit.fontawesome.com/1e65a1a17f.js" crossorigin="anonymous"></script>
+</head>
+<body>
 
-    <header>
-<h1>N<span class="plus">++</span></h1>
-<nav>
-  <a href="#">Products</a>
-  <a href="#">About us</a>
-  <a href="#">Contact us</a>
-</nav>
-</header>
+  <header>
+    <h1>N<span class="plus">++</span></h1>
+    <nav>
+      <a href="#">Products</a>
+      <a href="#">About us</a>
+      <a href="#">Contact us</a>
+    </nav>
+  </header>
 
-<section class="section-1">
+  <section class="buy">
     <img src="source/smartphone.png" alt="smartphone">
-  <div class="column">
-    <h1>Our awesome apps is ready to use!</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Quaerat deleniti fugiat dolorem sunt neque. Aperiam quidem ducimus
-       velit provident illum, qui id. Delectus, autem, excepturi!</p>
-    <a href="#">Buy now!</a>
-  </div>
-</section>
+    <div class="column">
+      <h1>Our awesome apps is ready to use!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Quaerat deleniti fugiat dolorem sunt neque. Aperiam quidem ducimus
+        velit provident illum, qui id. Delectus, autem, excepturi!</p>
+        <a href="#">Buy now!</a>
+      </div>
+    </section>
 
-<section class="icons">
-  <h1><i class="fas fa-code"></i></h1>
-  <h1><i class="fab fa-android"></i></h1>
-  <h1><i class="fas fa-cloud-download-alt"></i></h1>
-</section>
+    <section class="icons">
+      <h2><i class="fas fa-code"></i></h2>
+      <h2><i class="fab fa-android"></i></h2>
+      <h2><i class="fas fa-cloud"></i></h2>
+    </section>
 
-<section class="table">
-<table>
-  <tr class="heading">
-    <th>Web development </th>
-    <th>Mobile development </th>
-    <th>Hightload </th>
-  </tr>
-  <tr class="discription">
-    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, doloremque?</th>
-    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, doloremque?</th>
-    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, doloremque?</th>
-  </tr>
-</table>
-  </section>
+    <section class="table">
+      <div class="heading">
+        <h3>Web development </h3>
+        <h3>Mobile development </h3>
+        <h3>Hightload </h3>
+      </div>
+      <div class="discription">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore architecto nihil unde nostrum repellat fugiat animi, consectetur aperiam mollitia illum necessitatibus atque officiis quis est ex cupiditate voluptas culpa quos at facere eaque officia veniam. Id obcaecati ipsum, at reiciendis et odio culpa voluptatum ut voluptate reprehenderit cum esse rerum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore architecto nihil unde nostrum repellat fugiat animi, consectetur aperiam mollitia illum necessitatibus atque officiis quis est ex cupiditate voluptas culpa quos at facere eaque officia veniam. Id obcaecati ipsum, at reiciendis et odio culpa voluptatum ut voluptate reprehenderit cum esse rerum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore architecto nihil unde nostrum repellat fugiat animi, consectetur aperiam mollitia illum necessitatibus atque officiis quis est ex cupiditate voluptas culpa quos at facere eaque officia veniam. Id obcaecati ipsum, at reiciendis et odio culpa voluptatum ut voluptate reprehenderit cum esse rerum.</p>
+      </div>
+    </section>
 
-<section class="inputarea">
-    <h1>Contact Us!</h1>
-    <form class="usrform" action="index.html" method="post">
-      <input type="text"  name="name" value="" placeholder="Type here your name, please">
-      <input type="email"  name="" value="" placeholder="Type here your email, please">
-     <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Type here your phone, please">
-   </form>
-
-      <textarea name="comment" rows="3" form="usrform" placeholder="Ask your question"></textarea>
-      <br>
-      <input type="button" onclick="alert('Your information has been sent!')" value="Send email!">
-</section>
-
+    <section class="inputarea">
+      <h2>Contact Us!</h2>
+      <form class="usrform" action="index.html" method="post">
+        <input type="text"  name="name" value="" placeholder="Type here your name, please">
+        <input type="email"  name="" value="" placeholder="Type here your email, please">
+        <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Type here your phone, please">
+        <p>Choose your color</p>
+        <input type="color" name="color" value="#ffffff">
+        <p>Select your favorite number</p>
+        <input type="number" placeholder="number">
+        <p>Choose other number from 0 to 100 via slider</p>
+        <input type="range" name="number" value="">
+        <p>Select date</p>
+        <input type="date" name="date">
+        <p>Select time</p>
+        <input type="time" name="" value="">
+        <p>Select date and time</p>
+        <span>(different formats are available)</span>
+        <input type="datetime" name="datetime" placeholder="01.01.2019">
+        <input type="datetime-local" name="local-time">
+        <input type="month" name="month" value="">
+        <input type="week" name="week" value="">
+        <input type="url" name="url" placeholder="add your url">
+        <input type="file" name="file" placeholder="upliad your file">
+        <input type="search" name="search" placeholder="search inside our site">
+      </form>
+      <div class="form">
+        <textarea name="comment" rows="5" form="usrform" placeholder="Ask your question"></textarea>
+        <br>
+        <div class="gender">
+          <p>Who are you?</p>
+          <input type="radio" name="gender" value="male"> Male <br>
+          <input type="radio" name="gender" value="female"> Female <br>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="agree" value="">
+          <label for="agree">Information is correct!</label>
+        </div>
+        <input type="reset" name="reset" value="reset info">
+        <input type="button" name="button" value="Click me!" onclick="alert('This button do nothing')">
+        <input type="submit" onclick="alert('Your information has been sent!')" value="Send email!">
+        <input type="hidden" name="hidden" value="xxx">
+      </div>
+    </section>
   </body>
-</html>
+  </html>
