@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Warm-up</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="src/main.js">
+  </script>
+</head>
+<body>
+  <form class="assignment">
+    <h2 id="one">The sum of two numbers which ends on 2, 3 or 7 (negative values converted into positive ones)</h2>
+    <div class="first-assignment">
+      <label for="num1">first number</label>
+      <input type="number" id="num1" required>
+    </div>
+    <div class="first-assignment">
+      <label for="num2">second number</label>
+      <input type="number" id="num2" required>
+    </div>
+    <div>
+      <button type="button" name="button"
+      onclick="sumOfTwoNumbers()">Show result</button>
+    </div>
+    <p>Result: <span id="first-value"></span></p>
+    <hr>
+    <h2>Enter number of seconds for converting them into HH:MM:SS format</h2>
+    <div class="second-assignment">
+      <label for="timeInSeconds">Seconds:</label>
+      <input type="number" id="timeInSeconds" required>
+    </div>
+    <p>Result: <span id="seconds-value"></span></p>
+    <div>
+      <button type="button" name="button" onclick="toMilitary()">Convert</button>
+    </div>
+    <hr>
+    <h2>Enter time in HH:MM:SS format for converting to seconds</h2>
+    <div>
+      <label for="military-time">Time:</label>
+      <input type="time" id="military-time" step="1" required>
+    </div>
+    <div>
+      <button type="button" name="button" onclick="toSeconds()">Convert</button>
+    </div>
+    <p>Result: <span id="military-value"></span></p>
+    <hr>
+    <h2>Time between two dates</h2>
+    <div>
+      <label>Enter dates:</label>
+      <input type="datetime-local" step="1" id="firstData" value="2019-01-01T00:30" required>
+      <input type="datetime-local" step="1" id="secondData"value="2019-06-01T00:00" required>
+    </div>
+    <button type="button" name="button"
+    onclick="timeBetweenDates()">Show result</button>
+    <p>Result: <span id="local-time-result"></span></p>
+    <hr>
+    <h2>Enter number of a cells in a row and column</h2>
+    <div>
+      <input type="number" id="chess-width" placeholder="row" required>
+      <input type="number" id="chess-height" placeholder="column" required>
+      <input type="number" id="chessCell" placeholder="size(optional) default = 45" max="150">
+    </div>
+    <div>
+      <button type="button" onclick="makeBoard()">Show result</button>
+    </div>
+
+    <canvas id="MyCanvas" width="300" height="300"></canvas>
+    <hr>
+    <h2>Links or IP's</h2>
+    <div>
+      <label for="textarea" class="textaera-label">Enter links or IP adresses here:</label>
+      <textarea name="" id="linkOrIp" rows="5" maxlength="300" required></textarea>
+    </div>
+    <button type="button" name="button" onclick="linksOrIp()">Result</button>
+    <div>
+    <ul id="linkOrIpResult">
+    </ul>
+    </div>
+    <hr>
+    <h2>regex</h2>
+    <div>
+      <label for="regex-input">Enter regEx or text:</label>
+      <input type="text" id="regex-input">
+    </div>
+    <div>
+      <label for="regex-textarea">Enter some text:</label>
+     <textarea rows="5" id="regex-textarea" maxlength="300" required></textarea>
+    </div>
+    <button type="button" name="button" onclick="markText()">Result</button>
+    <p id="markResult"></p>
+  </form>
+  <hr>
+  <footer>
+    &copy
+  </footer>
+</body>
+</html>

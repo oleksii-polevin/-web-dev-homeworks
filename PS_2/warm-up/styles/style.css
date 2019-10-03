@@ -1,0 +1,39 @@
+body {
+  background-color: #ccc;
+}
+
+.assignment h2 {
+  text-align: center;
+}
+
+.assignment div {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 2fr);
+  padding: 4px;
+}
+input, button {
+  width: 8em;
+  height: 2em;
+}
+input[type=datetime-local] {
+  width: 16em;
+}
+textarea {
+  resize: none;
+}
+
+#linkOrIp, #regex-textarea, #regex-input, ul {
+  grid-area: 1 / 2 / 1 / 4;
+}
+#regex-input {
+  width: auto;
+}
+#chessCell {
+  width: 15em;
+}
+canvas {
+  border: 1px solid black;
+}
+footer {
+  text-align: right;
+}
