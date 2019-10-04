@@ -14,6 +14,11 @@ const TIME =
    hour: 3600,
    min: 60
 }
+//holds results
+const timeHolder = {
+  time: 0,
+  date: 0
+}
 
 /* This method returns the sum of numbers ends on "2", "3" or "7"
 in given by user range */
@@ -34,21 +39,28 @@ let sumOfTwoNumbers = () => {
 /*
 converting to military time
 */
-let seconds;
+
 let toMilitary = () => {
-seconds = parseInt(document.getElementById('timeInSeconds').value);
-  if(validation(seconds, seconds)) {
-    let hour = checkTime(calcTime(TIME.hour));
-    let min = checkTime(calcTime(TIME.min));
-    seconds = checkTime(seconds);
+timeHolder.time = parseInt(document.getElementById('timeInSeconds').value);
+  if(validation(timeHolder.time, timeHolder.time)) {
+    let hour = checkTime(calcTime('time', TIME.hour));
+    let min = checkTime(calcTime('time', TIME.min));
+    let seconds = checkTime(timeHolder.time);
     document.getElementById('seconds-value').innerHTML = hour + ":" + min + ":" + seconds;
   }
 }
 
-function calcTime(constanta) {
+function calcTime(name, constanta) {
   let t = 0;
-  while(seconds >= constanta) {
-    seconds -= constanta;
+  let value;
+  //it is impossible directly install object key into fumction
+  for(let key in timeHolder) {
+    if(key.toString() === name) {
+      value = key;
+    }
+  }
+  while(timeHolder[value] >= constanta) {
+    timeHolder[value] -= constanta;
     t++;
   }
   return t;
@@ -63,31 +75,33 @@ function checkTime(t) {
 let toSeconds = () => {
   const time = document.getElementById('military-time').value;
   let timeSlice = time.split(":");
-  let seconds = TIME.hour * (parseInt(timeSlice[0])) +
-   TIME.min * (parseInt(timeSlice[1])) +
-   (parseInt(timeSlice[2]));
-  document.getElementById('military-value').innerHTML = seconds + " second(s)";
+  const regex = /\d+/;
+  let valid = true;
+  for(let i = 0; i < timeSlice.length; i++) {
+    if(!regex.test(timeSlice[i]) || timeSlice.length < 3) {
+      valid = false;
+    }
+  }
+  if(valid) {
+    let seconds = TIME.hour * (parseInt(timeSlice[0])) +
+    TIME.min * (parseInt(timeSlice[1])) +
+    (parseInt(timeSlice[2]));
+    document.getElementById('military-value').innerHTML = seconds + " second(s)";
+  } else   alert('fill all fields!');
 }
 /*this function calculates approximate periode of time between two dates.
 all monthes set to 30 deys, leap years also havn't taken into account*/
-let sec;
 let timeBetweenDates = () => {
   let firstData = new Date(document.getElementById('firstData').value);
   let secondData = new Date(document.getElementById('secondData').value);
-  sec = Math.abs((firstData - secondData) / 1000);
+  timeHolder.date = Math.abs((firstData - secondData) / 1000);
   let result = "";
   for(let key in TIME) {
-    let t = calcDates(TIME[key]);
-    result  += t +" " + key.toString() + "(s), ";
+    let t = calcTime('date', TIME[key]);
+    result  += t + " " + key.toString() + "(s), ";
   }
-  result += sec + "second(s).";
+  result += timeHolder.date + "second(s).";
   document.getElementById('local-time-result').innerHTML = result;
-}
-
-function calcDates(constanta) {
-  let t = Math.floor(sec / constanta);
-  sec -= t * constanta;
-  return t;
 }
 
 function makeBoard() {
@@ -147,12 +161,8 @@ function printResults(arr, httpRegex) {
 
 function markText() {
   let input = document.getElementById('regex-input').value;
-  let check = /^\/(.+)\/$/; // checking whether or not regular expression being inputted
-  if(check.test(input)) {
-    input = input.replace(check, '$1');
-  }
   let regex = new RegExp(input, 'g');
   let text = document.getElementById('regex-textarea').value;
-  text = text.replace(regex, '<mark>' + input + '</mark>');
+  text = text.replace(regex, '<mark>' + regex.exec(text) + '</mark>');
   document.getElementById('markResult').innerHTML = text;
 }
