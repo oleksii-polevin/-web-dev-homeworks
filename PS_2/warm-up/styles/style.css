@@ -22,7 +22,7 @@ textarea {
   resize: none;
 }
 
-#linkOrIp, #regex-textarea, #regex-input, ul {
+#linkOrIp, #regex-textarea, #regex-input, ul, #markResult {
   grid-area: 1 / 2 / 1 / 4;
 }
 #regex-input {

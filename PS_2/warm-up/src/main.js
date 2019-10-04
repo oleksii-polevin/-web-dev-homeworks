@@ -163,6 +163,13 @@ function markText() {
   let input = document.getElementById('regex-input').value;
   let regex = new RegExp(input, 'g');
   let text = document.getElementById('regex-textarea').value;
-  text = text.replace(regex, '<mark>' + regex.exec(text) + '</mark>');
+  let arr = [...text.matchAll(regex)];
+  for(let i = 0; i < arr.length; i++) {
+    //creating temporary regular expression for replacing all occurances
+    //which is crucial for complicated regular expressions
+    //especially for abstract ones like \w+ \d+ 
+    let temp = new RegExp(arr[i], 'g');
+   text = text.replace(temp, '<mark>' + arr[i] + '</mark>');
+ }
   document.getElementById('markResult').innerHTML = text;
 }
