@@ -7,16 +7,16 @@
   <title>Table task</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
   <style media="screen">
-     #category, #name {
+     #categoryDirection, #nameDirection {
        cursor: pointer;
      }
-     #category:hover, #name:hover {
-       color: #ccc;
+     #categoryDirection:hover, #nameDirection:hover {
+       color: #aaa;
      }
   </style>
 
 </head>
-<body>
+<body onload="createTable(GOODS)">
   <section class="container" style="margin-top: 2rem">
     <h2 class="title is-2">PS2 JS+RegExp</h2>
     <h4 class="subtitle is-4">Table task</h4>
@@ -29,13 +29,13 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" id="input" type="text" placeholder="Search by name" onkeyup="fillByName()">
+                <input class="input" id="input" type="text" placeholder="Search by name" onkeyup="search('name', 'input')">
               </p>
             </div>
             <div class="field">
               <p class="control">
                 <div class="select" style="width: 100%">
-                  <select placeholder="Filter by category" style="width: 100%" id="select" onchange="byCategory()">
+                  <select placeholder="Filter by category" style="width: 100%" id="select" onchange="search('category', 'select')">
                     <option value="" selected>Filter by category</option>
                     <option value="supplies">Office supplies</option>
                     <option value="furniture">Furniture</option>
@@ -51,8 +51,8 @@
         <table class="table is-striped is-fullwidth">
           <thead>
             <tr>
-              <th id="category" onclick="alphabeticalSort('category')">Category<span id="categoryDirection">▼</span></th>
-              <th id="name" onclick="alphabeticalSort('name')">Name<span id="nameDirection">▼</span></th>
+              <th id="category">Category<span id="categoryDirection"  onclick="alphabeticalSort('category')">▼</span></th>
+              <th id="name">Name<span id="nameDirection" onclick="alphabeticalSort('name')">▼</span></th>
               <th>Amount</th>
               <th>Price</th>
             </tr>

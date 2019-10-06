@@ -45,39 +45,41 @@ const GOODS = [
 //obtaining the body of the table
 let tbody = document.getElementById('body');
 //temporary array for storing search results
-let arr = [];
-//variable which deny reverse arr has already sorted by category
+let arr = GOODS.slice();
+//array for storing search results fitered by particular category
+let categoryFilter = [];
+//supress reversing of array which has already been sorted by category
 let filter = false;
-//filing table by category
-function fillByName() {
-  let input = document.getElementById('input').value.toUpperCase();
-  arr = []; //zeroing array
-  for(var number of GOODS) {
+//criterion define filter by name or category
+//id used for identification place of event
+function search(criterion, id) {
+  let input = document.getElementById(id).value.toLowerCase();
+  if(criterion === 'category') {
+    !input ? filter = false : filter = true;
+    arr = coreSearch(GOODS, input, criterion);
+    categoryFilter = arr;
+    document.getElementById('input').value = '';
+  } else {
+    categoryFilter.length === 0 ? arr = coreSearch(GOODS, input, criterion) :
+    arr = coreSearch(categoryFilter, input, criterion);
+  }
+  createTable(arr);
+}
+
+//search in global array or filtered by category
+function coreSearch(array, input, criterion) {
+  let tempArr = [];
+  for(var number of array) {
     for(var key in number) {
-      let value = number[key].toString().toUpperCase();
-      if(value.indexOf(input) > -1 && key === 'name' && input !== '') {
-        arr.push(number);
+      let value = number[key].toString().toLowerCase();
+      if(value.indexOf(input) > -1 && key === criterion) {
+        tempArr.push(number);
       }
     }
   }
-  filter = false;
-  createTable(arr);
+  return tempArr;
 }
-//filling table by category
-function byCategory() {
-  let e = document.getElementById('select');
-  let input = e.options[e.selectedIndex].value;
-  arr = [];
-  for(var number of GOODS) {
-    for(var key in number) {
-      if(number[key] === input) {
-        arr.push(number);
-      }
-    }
-  }
-  filter = true;
-  createTable(arr);
-}
+
 //creating new table on each event
 function createTable(arr) {
   tbody.innerHTML = "";
@@ -106,9 +108,8 @@ function createTable(arr) {
 //variables used for display sorted array normal or reversed
 let nFlag = true; //for name
 let cFlag = true;// for category
-//
+//sorting array by name or category
 function alphabeticalSort(sorter) {
-  //sorting array by name or category
   arr.sort(function(a, b) {
     let x = a[sorter].toLowerCase();
     let y = b[sorter].toLowerCase();
@@ -119,14 +120,13 @@ function alphabeticalSort(sorter) {
     nFlag = !nFlag;
     switchDirection('nameDirection', nFlag);
   } else {
-    if(!filter) { //prevents reversing arr already sorted by category
+    if(!filter) {
       cFlag  ? createTable(arr) : createTable(arr.reverse());
       cFlag = !cFlag;
       switchDirection('categoryDirection', cFlag);
     }
   }
 }
-
 //shows sorting direction
 let switchDirection = (item, flag) => {
   let x = document.getElementById(item);

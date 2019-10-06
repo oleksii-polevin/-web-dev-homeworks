@@ -69,9 +69,9 @@
     <h2>Links or IP's</h2>
     <div>
       <label for="textarea" class="textaera-label">Enter links or IP adresses here:</label>
-      <textarea name="" id="linkOrIp" rows="5" maxlength="300" required></textarea>
+      <textarea name="" id="linkOrIp" rows="5" maxlength="300" onfocusout="linksOrIp()" required></textarea>
     </div>
-    <button type="button" name="button" onclick="linksOrIp()">Result</button>
+    <!-- <button type="button" name="button" onclick="linksOrIp()">Result</button> -->
     <div>
     <ul id="linkOrIpResult">
     </ul>

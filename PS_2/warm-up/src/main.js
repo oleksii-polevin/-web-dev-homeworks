@@ -39,7 +39,6 @@ let sumOfTwoNumbers = () => {
 /*
 converting to military time
 */
-
 let toMilitary = () => {
 timeHolder.time = parseInt(document.getElementById('timeInSeconds').value);
   if(validation(timeHolder.time, timeHolder.time)) {
@@ -129,21 +128,20 @@ function makeBoard() {
 }
 let linksOrIp = () => {
   let message = document.getElementById('linkOrIp').value.split(',');
-  const httpRegex = /^(http:\/\/|https:\/\/)(w{3}\.\w+\d*\.\w{3})$/;
+  const httpRegex = /(http:\/\/|https:\/\/)(w{3}\.\w+\d*\.\w{3})/;
   //I borrowed this huge regex from net. It filter numbers bigger than 255
   // and search for exactly 4 groups of numbers divided by dot
-  const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/g;
+  const ipRegex = /(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])/;
   let arr = [];
-  for(let i = 0; i < message.length; i++) {
-    if(httpRegex.test(message[i]) || ipRegex.test(message[i])) {
-      arr.push(message[i]);
-    }
+  for(let i of message) {
+    if(ipRegex.test(i) || httpRegex.test(i))
+    arr.push(i.replace(/^\s+|['"]|\s+$/g,''));
   }
   printResults(arr, httpRegex);
 }
 function printResults(arr, httpRegex) {
   arr.sort();
-  for(let i = 0; i < arr.length; i++){
+  for(let i = 0; i < arr.length; i++) {
     let newlink = document.createElement('a');
     let br = document.createElement('br');
     let result = arr[i];
@@ -167,7 +165,7 @@ function markText() {
   for(let i = 0; i < arr.length; i++) {
     //creating temporary regular expression for replacing all occurances
     //which is crucial for complicated regular expressions
-    //especially for abstract ones like \w+ \d+ 
+    //especially for abstract ones like \w+ \d+
     let temp = new RegExp(arr[i], 'g');
    text = text.replace(temp, '<mark>' + arr[i] + '</mark>');
  }
