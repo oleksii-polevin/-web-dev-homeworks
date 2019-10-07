@@ -118,7 +118,7 @@ function makeBoard() {
         let span = document.createElement('span');
         span.style.width = cell;
         span.style.height = cell;
-        if(i % 2 === 0 && j % 2 !== 0 || i % 2 !== 0 && j % 2=== 0){
+        if(i % 2 === j % 2) {
           span.style.backgroundColor = 'white';
         } else {
           span.style.backgroundColor = "black";
