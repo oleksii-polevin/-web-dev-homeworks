@@ -54,17 +54,14 @@
     onclick="timeBetweenDates()">Show result</button>
     <p>Result: <span id="local-time-result"></span></p>
     <hr>
-    <h2>Enter number of a cells in a row and column</h2>
+    <h2>Enter number of a cells in a row and column in 8x8 format</h2>
     <div>
-      <input type="number" id="chess-width" placeholder="row" required>
-      <input type="number" id="chess-height" placeholder="column" required>
-      <input type="number" id="chessCell" placeholder="size(optional) default = 45" max="150">
-    </div>
-    <div>
+      <input type="text" id="chess" placeholder="8X8" required>
       <button type="button" onclick="makeBoard()">Show result</button>
+      <button type="button" onclick="clearBoard()">Clear</button>
     </div>
-
-    <canvas id="MyCanvas" width="300" height="300"></canvas>
+      <section id="board">
+      </section>
     <hr>
     <h2>Links or IP's</h2>
     <div>

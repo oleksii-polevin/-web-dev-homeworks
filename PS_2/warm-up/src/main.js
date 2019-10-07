@@ -104,56 +104,85 @@ let timeBetweenDates = () => {
 }
 
 function makeBoard() {
-  var canvas = document.getElementById("MyCanvas");
-  const col = parseInt(document.getElementById('chess-width').value);
-  const row = parseInt(document.getElementById('chess-height').value);
-  let cell = document.getElementById('chessCell').value;
-  if(cell === '') {
-    cell = 45;
-  }
-  if(validation(row, col)) {
-    var ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.width = row * cell;
-    canvas.height = col * cell;
-    ctx.fillStyle = "#FF0000";
-    for(let i = 0; i < row; i++){
-      for(let j = 0; j < col; j++){
+  const regex = /\D{1}/;
+  let format = document.getElementById('chess').value.split(regex);
+  const board = document.getElementById('board');
+  const col = parseInt(format[0]);
+  const row = parseInt(format[1]);
+  let cell = '40px';
+  if(boardValid(format, board)) {
+    board.innerHTML = '';
+    for(let i = 0; i < row; i++) {
+      let p = document.createElement('p');
+      for(let j = 0; j < col; j++) {
+        let span = document.createElement('span');
+        span.style.width = cell;
+        span.style.height = cell;
         if(i % 2 === 0 && j % 2 !== 0 || i % 2 !== 0 && j % 2=== 0){
-          ctx.fillRect(i * cell, j * cell, cell, cell);
+          span.style.backgroundColor = 'white';
+        } else {
+          span.style.backgroundColor = "black";
         }
+        p.appendChild(span);
       }
+      p.style.margin = '0';
+      p.style.display = 'flex';
+      p.style.flexDirection = 'row';
+      board.appendChild(p);
     }
   }
 }
-let linksOrIp = () => {
+
+const clearBoard = () => {
+  document.getElementById('chess').value = '';
+  document.getElementById('board').innerHTML = '';
+}
+const boardValid = (format, board) => {
+   if(format.length !== 2 || isNaN(format[0]) ||isNaN(format[1])) {
+     let message = document.createElement('h2');
+     let text = document.createTextNode("Invalid input");
+     message.appendChild(text);
+     board.appendChild(message);
+     message.style.color = "red";
+     return false;
+   }
+   return true;
+}
+const linksOrIp = () => {
   let message = document.getElementById('linkOrIp').value.split(',');
-  const httpRegex = /(http:\/\/|https:\/\/)(w{3}\.\w+\d*\.\w{3})/;
+  for(let i = 0; i < message.length; i++) {
+    message[i] = message[i].replace(/^\s+|^['"]|['"]$|\s+$/g,'');
+
+  }
+  const httpRegex = /^(http:\/\/|https:\/\/)(w{3}\.\w+\d*\.\w{3})$/;
   //I borrowed this huge regex from net. It filter numbers bigger than 255
   // and search for exactly 4 groups of numbers divided by dot
-  const ipRegex = /(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])/;
+  const ipRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
   let arr = [];
   for(let i of message) {
-    if(ipRegex.test(i) || httpRegex.test(i))
-    arr.push(i.replace(/^\s+|['"]|\s+$/g,''));
+    if(ipRegex.test(i) || httpRegex.test(i)) {
+    arr.push(i);
+  }
   }
   printResults(arr, httpRegex);
 }
 function printResults(arr, httpRegex) {
   arr.sort();
+  let output = document.getElementById('linkOrIpResult');
+  output.innerHTML = '';
   for(let i = 0; i < arr.length; i++) {
     let newlink = document.createElement('a');
     let br = document.createElement('br');
     let result = arr[i];
     newlink.setAttribute('href', result);
-    //removing http://
+    //for displaying without http
     if(httpRegex.test(arr[i])) {
       result = arr[i].replace(httpRegex, '$2');
     }
     newlink.innerHTML = result;
     newlink.setAttribute('target', '_blank');
-    document.getElementById('linkOrIpResult').appendChild(newlink);
-    document.getElementById('linkOrIpResult').appendChild(br);
+    output.appendChild(newlink);
+    output.appendChild(br);
   }
 }
 

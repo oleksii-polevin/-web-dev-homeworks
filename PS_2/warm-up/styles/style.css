@@ -28,12 +28,7 @@ textarea {
 #regex-input {
   width: auto;
 }
-#chessCell {
-  width: 15em;
-}
-canvas {
-  border: 1px solid black;
-}
+
 footer {
   text-align: right;
 }
