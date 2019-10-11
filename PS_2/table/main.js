@@ -43,7 +43,7 @@ const GOODS = [
   }
 ];
 //obtaining the body of the table
-let tbody = document.getElementById('body');
+const tbody = document.getElementById('body');
 //temporary array for storing search results
 let arr = GOODS.slice();
 //array for storing search results fitered by particular category
@@ -53,7 +53,7 @@ let filter = false;
 //criterion define filter by name or category
 //id used for identification place of event
 function search(criterion, id) {
-  let input = document.getElementById(id).value.toLowerCase();
+  const input = document.getElementById(id).value.toLowerCase();
   if(criterion === 'category') {
     !input ? filter = false : filter = true;
     arr = coreSearch(GOODS, input, criterion);
@@ -69,9 +69,9 @@ function search(criterion, id) {
 //search in global array or filtered by category
 function coreSearch(array, input, criterion) {
   let tempArr = [];
-  for(var number of array) {
-    for(var key in number) {
-      let value = number[key].toString().toLowerCase();
+  for(let number of array) {
+    for(let key in number) {
+      const value = number[key].toString().toLowerCase();
       if(value.indexOf(input) > -1 && key === criterion) {
         tempArr.push(number);
       }
@@ -129,7 +129,7 @@ function alphabeticalSort(sorter) {
 }
 //shows sorting direction
 let switchDirection = (item, flag) => {
-  let x = document.getElementById(item);
-  x.style.display = 'inline-block';
-  flag ? x.style.transform = "rotate(180deg)" : x.style.transform = "rotate(0deg)";
+  let triangle = document.getElementById(item);
+  triangle.style.display = 'inline-block';
+  flag ? triangle.style.transform = "rotate(180deg)" : triangle.style.transform = "rotate(0deg)";
 }
