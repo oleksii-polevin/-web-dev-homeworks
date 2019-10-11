@@ -56,7 +56,7 @@ header a:hover {
   z-index: 0;
   justify-self: center;
   align-self: center;
-  height: 90%;
+  height: 100%;
   width: auto;
 }
 
@@ -189,4 +189,13 @@ input[type=reset], input[type=button] {
 
 input[type=submit] {
   align-self: center;
+}
+#up {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 2%;
+}
+a {
+  cursor: pointer;
 }
