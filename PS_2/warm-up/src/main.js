@@ -27,7 +27,7 @@ let sumOfTwoNumbers = () => {
   const second = parseInt(document.getElementById('num2').value);
   let result = 0;
   if(validation(first, second)) {
-    let regExpression = /(2|3|7)$/
+    const regExpression = /(2|3|7)$/
     for(i = Math.min(first, second); i <= Math.max(first, second); i++){
       if(regExpression.test(i)){
         result += Math.abs(i);
@@ -42,15 +42,15 @@ converting to military time
 let toMilitary = () => {
 timeHolder.time = parseInt(document.getElementById('timeInSeconds').value);
   if(validation(timeHolder.time, timeHolder.time)) {
-    let hour = checkTime(calcTime('time', TIME.hour));
-    let min = checkTime(calcTime('time', TIME.min));
+    const hour = checkTime(calcTime('time', TIME.hour));
+    const min = checkTime(calcTime('time', TIME.min));
     let seconds = checkTime(timeHolder.time);
     document.getElementById('seconds-value').innerHTML = hour + ":" + min + ":" + seconds;
   }
 }
 
 function calcTime(name, constanta) {
-  let t = 0;
+  let time = 0;
   let value;
   //it is impossible directly install object key into fumction
   for(let key in timeHolder) {
@@ -60,20 +60,20 @@ function calcTime(name, constanta) {
   }
   while(timeHolder[value] >= constanta) {
     timeHolder[value] -= constanta;
-    t++;
+    time++;
   }
-  return t;
+  return time;
 }
 
-function checkTime(t) {
-  if(t < 10){
-    t = '0' + t;
+function checkTime(time) {
+  if(time < 10){
+    time = '0' + time;
   }
-  return t;
+  return time;
 }
 let toSeconds = () => {
   const time = document.getElementById('military-time').value;
-  let timeSlice = time.split(":");
+  const timeSlice = time.split(":");
   const regex = /\d+/;
   let valid = true;
   for(let i = 0; i < timeSlice.length; i++) {
@@ -105,17 +105,17 @@ let timeBetweenDates = () => {
 
 function makeBoard() {
   const regex = /\D{1}/;
-  let format = document.getElementById('chess').value.split(regex);
+  const format = document.getElementById('chess').value.split(regex);
   const board = document.getElementById('board');
   const col = parseInt(format[0]);
   const row = parseInt(format[1]);
-  let cell = '40px';
+  const cell = '40px';
   if(boardValid(format, board)) {
     board.innerHTML = '';
     for(let i = 0; i < row; i++) {
       let p = document.createElement('p');
       for(let j = 0; j < col; j++) {
-        let span = document.createElement('span');
+        const span = document.createElement('span');
         span.style.width = cell;
         span.style.height = cell;
         if(i % 2 === j % 2) {
@@ -139,8 +139,8 @@ const clearBoard = () => {
 }
 const boardValid = (format, board) => {
    if(format.length !== 2 || isNaN(format[0]) ||isNaN(format[1])) {
-     let message = document.createElement('h2');
-     let text = document.createTextNode("Invalid input");
+     const message = document.createElement('h2');
+     const text = document.createTextNode("Invalid input");
      message.appendChild(text);
      board.appendChild(message);
      message.style.color = "red";
@@ -149,7 +149,7 @@ const boardValid = (format, board) => {
    return true;
 }
 const linksOrIp = () => {
-  let message = document.getElementById('linkOrIp').value.split(',');
+  const message = document.getElementById('linkOrIp').value.split(',');
   for(let i = 0; i < message.length; i++) {
     message[i] = message[i].replace(/^\s+|^['"]|['"]$|\s+$/g,'');
 
@@ -168,7 +168,7 @@ const linksOrIp = () => {
 }
 function printResults(arr, httpRegex) {
   arr.sort();
-  let output = document.getElementById('linkOrIpResult');
+  const output = document.getElementById('linkOrIpResult');
   output.innerHTML = '';
   for(let i = 0; i < arr.length; i++) {
     let newlink = document.createElement('a');
