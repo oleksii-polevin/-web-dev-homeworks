@@ -45,11 +45,19 @@ const GOODS = [
 //obtaining the body of the table
 const tbody = document.getElementById('body');
 //temporary array for storing search results
-let arr = GOODS.slice();
-//array for storing search results fitered by particular category
+let arr = GOODS;
+//arrays for storing search results fitered by particular category
 let categoryFilter = [];
 //supress reversing of array which has already been sorted by category
 let filter = false;
+const name = document.getElementById('name');
+const category = document.getElementById('select');
+name.addEventListener('keyup', function() {
+   search('name', 'name')
+ });
+category.addEventListener('change', function() {
+  search('category', 'select')
+});
 //criterion define filter by name or category
 //id used for identification place of event
 function search(criterion, id) {
@@ -58,7 +66,9 @@ function search(criterion, id) {
     !input ? filter = false : filter = true;
     arr = coreSearch(GOODS, input, criterion);
     categoryFilter = arr;
-    document.getElementById('input').value = '';
+    if(name.value != '') {
+      arr = coreSearch(categoryFilter, name.value.toLowerCase(), 'name');
+    }
   } else {
     categoryFilter.length === 0 ? arr = coreSearch(GOODS, input, criterion) :
     arr = coreSearch(categoryFilter, input, criterion);

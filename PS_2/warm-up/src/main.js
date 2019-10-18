@@ -28,9 +28,7 @@ let sumOfTwoNumbers = () => {
   let result = 0;
   if(validation(first, second)) {
     const regExpression = /(2|3|7)$/
-    for(let i = Math.min(first, second); i <= Math.max(first, second); i++){
       if(regExpression.test(i)){
-        result += i;
       }
     }
     document.getElementById('first-value').innerHTML = result;
@@ -154,7 +152,6 @@ const linksOrIp = () => {
     message[i] = message[i].replace(/^\s+|^['"]|['"]$|\s+$/g,'');
 
   }
-  const httpRegex = /^(http:\/\/|https:\/\/)((w{3})*\.\w+\d*\.\w{3})$/;
   //I borrowed this huge regex from net. It filter numbers bigger than 255
   // and search for exactly 4 groups of numbers divided by dot
   const ipRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
@@ -190,6 +187,4 @@ function markText() {
   let input = document.getElementById('regex-input').value;
   let regex = new RegExp(input, 'g');
   let text = document.getElementById('regex-textarea').value;
-  let markedText = text.replace(regex, '<mark>$&</mark>');
-  document.getElementById('markResult').innerHTML = markedText;
 }

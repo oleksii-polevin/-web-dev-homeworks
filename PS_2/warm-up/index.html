@@ -9,7 +9,7 @@
 </head>
 <body>
   <form class="assignment">
-    <h2 id="one">The sum of two numbers which ends on 2, 3 or 7</h2>
+    <h2 id="one">The sum of two numbers which ends on 2, 3 or 7 (negative values converted into positive ones)</h2>
     <div class="first-assignment">
       <label for="num1">first number</label>
       <input type="number" id="num1" required>
@@ -37,7 +37,7 @@
     <h2>Enter time in HH:MM:SS format for converting to seconds</h2>
     <div>
       <label for="military-time">Time:</label>
-      <input type="text" id="military-time" step="1" required>
+      <input type="time" id="military-time" step="1" required>
     </div>
     <div>
       <button type="button" name="button" onclick="toSeconds()">Convert</button>
@@ -66,7 +66,7 @@
     <h2>Links or IP's</h2>
     <div>
       <label for="textarea" class="textaera-label">Enter links or IP adresses here:</label>
-      <textarea id="linkOrIp" rows="5" maxlength="300" onfocusout="linksOrIp()" required></textarea>
+      <textarea name="" id="linkOrIp" rows="5" maxlength="300" onfocusout="linksOrIp()" required></textarea>
     </div>
     <!-- <button type="button" name="button" onclick="linksOrIp()">Result</button> -->
     <div>
