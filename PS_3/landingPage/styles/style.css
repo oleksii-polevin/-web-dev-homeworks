@@ -1,0 +1,220 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+}
+
+header h1{
+  flex: 2;
+  padding-left: 10px;
+  font-size: 20px;
+  font-family: "Helvetica", sans-serif;
+  font-weight: bold;
+}
+
+header nav {
+  display: flex;
+}
+
+header a {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 15px 10px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 15px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+header a:hover {
+  color: blue;
+}
+
+.plus {
+  color: #1abc9c;
+  font-family: "Helvetica", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.buy {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  background-color: #1abc9c;
+  padding: 5em 0;
+}
+.buy div.column {
+  padding: 5em;
+}
+
+.buy img {
+  z-index: 0;
+  justify-self: center;
+  align-self: center;
+  height: 100%;
+  width: auto;
+}
+
+.buy .column {
+  padding: 10px;
+  font-size: 12px;
+  text-align:left;
+}
+
+.buy a {
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.buy a:hover{
+  color: blue;
+  border: 1px solid blue;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.icons i {
+  display:inline-block;
+  font-size: 40px;
+  background-color:#1abc9c;
+  color:white;
+  text-align: center;
+  vertical-align: center;
+  padding: .4em;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.fa-android {
+  font-weight: normal;
+}
+
+.icons {
+  background-color: #ffffff;
+}
+
+.heading, .discription {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+
+.heading {
+  font-family: "Helvetica", sans-serif;
+  font-size: 20px;
+}
+
+.discription {
+  font-family: sans-serif;
+  font-size: 10px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.inputarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1abc9c;
+  color: white;
+  padding-bottom: 50px;
+}
+
+form, .form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+input, textarea {
+  width: 300px;
+  padding: 2px;
+  margin: 2px;
+  resize: none;
+}
+
+input[type=search] {
+  width: inherit;
+}
+
+input[type=submit] {
+  font-size: 20px;
+  color: white;
+  background-color: #1abc9c;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 150px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  color: blue;
+  border: 1px solid blue;
+}
+
+.gender p {
+  margin: .3em;
+}
+
+input[type=radio], input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+}
+
+input[type=reset], input[type=button] {
+  width: 70px;
+  cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+input[type=submit] {
+  align-self: center;
+}
+#up {
+  display: none;
+  height: 2em;
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+}
+/* a {
+  cursor: pointer;
+} */
+.about {
+  background-color: #1abc9c;
+  text-align: center;
+  font-family: monospace;
+}
+.about h2 {
+  text-transform: capitalize;
+  color: white;
+}
+.about p {
+  border: 3px dotted lightblue;
+   margin-bottom: 0;
+}
