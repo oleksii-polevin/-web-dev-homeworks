@@ -193,7 +193,7 @@ input[type=submit] {
 #up {
   display: none;
   position: fixed;
-  bottom: 0;
+  bottom: 2%;
   right: 2%;
 }
 a {

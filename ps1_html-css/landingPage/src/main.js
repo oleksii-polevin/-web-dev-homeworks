@@ -1,4 +1,4 @@
-//this variable used for custom correction scrolling position
+//this variable used for custom correction  position of scrolling
 const corrector = 50;
 $(document).ready(function() {
   $(window).scroll(function() {
