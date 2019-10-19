@@ -53,25 +53,25 @@ let filter = false;
 const name = document.getElementById('name');
 const category = document.getElementById('select');
 name.addEventListener('keyup', function() {
-   search('name', 'name')
+   search('name')
  });
 category.addEventListener('change', function() {
-  search('category', 'select')
+  search('category')
 });
 //criterion define filter by name or category
 //id used for identification place of event
-function search(criterion, id) {
-  const input = document.getElementById(id).value.toLowerCase();
+function search(criterion) {
   if(criterion === 'category') {
-    !input ? filter = false : filter = true;
-    arr = coreSearch(GOODS, input, criterion);
+    !category.value ? filter = false : filter = true;
+    arr = coreSearch(GOODS, category.value.toLowerCase(), criterion);
     categoryFilter = arr;
-    if(name.value != '') {
+    //additional search in filtered by category array
+    if(name.value) {
       arr = coreSearch(categoryFilter, name.value.toLowerCase(), 'name');
     }
   } else {
-    categoryFilter.length === 0 ? arr = coreSearch(GOODS, input, criterion) :
-    arr = coreSearch(categoryFilter, input, criterion);
+    categoryFilter.length === 0 ? arr = coreSearch(GOODS, name.value.toLowerCase(), criterion) :
+    arr = coreSearch(categoryFilter, name.value.toLowerCase(), criterion);
   }
   createTable(arr);
 }
@@ -94,25 +94,18 @@ function coreSearch(array, input, criterion) {
 function createTable(arr) {
   tbody.innerHTML = "";
   let sum = 0;
-  let amount = 1;
-  for(let items of arr) {
-    for(let key in items) {
-      let td = document.createElement('td');
-      let text = document.createTextNode(items[key]);
-      if(key.toString() === 'amount') {
-        amount = items[key];
-      }
-      if(key.toString() === 'price') {
-        sum += items[key] * amount;
-        amount = 1;
-        text = document.createTextNode("$" + items[key]);
-      }
-      tbody.appendChild(td);
-      td.appendChild(text);
-    }
-    let tr = document.createElement('tr');
-    tbody.appendChild(tr);
-  }
+  arr.forEach((item) => {
+    const tr = document.createElement('tr');
+    sum += item.price * item.amount;
+    tr.innerHTML = `
+    <tr>
+      <td>${item.name}</td>
+      <td>${item.category}</td>
+      <td>${item.amount}</td>
+      <td>${'$' + item.price * item.amount}</td>
+      `;
+      tbody.appendChild(tr);
+  })
   document.getElementById('sum').innerHTML = "$" + sum;
 }
 //variables used for display sorted array normal or reversed
