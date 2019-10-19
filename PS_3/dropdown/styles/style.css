@@ -22,10 +22,16 @@ img {
 }
 #down {
  position: absolute;
- right: 5%;
+ right: 2%;
  bottom: 25%;
  color: black;
 }
 #select {
   color: #bbb;
+}
+.hidden {
+  display: none;
+}
+.selected {
+  background-color: #ddd;
 }

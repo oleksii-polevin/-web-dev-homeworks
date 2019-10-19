@@ -10,40 +10,37 @@ const names = [["Barack Obama","media/boss.png"],
 //creating dropdown but don't display it
 function createHidden() {
   for(let number of names) {
-    const div = document.createElement('div');
-    const text = document.createTextNode(number[0]);
-    const img = document.createElement('img');
-    img.setAttribute("src", number[1]);
-    img.setAttribute("width", "25px");
-    div.appendChild(img);
-    div.appendChild(text);
-    div.style.display = "none";
-    container.appendChild(div);
+    const div = $('<div></div>');
+    const img = $('<img></img>');
+    $(img).attr({"src": number[1],
+    "width": "25px"});
+    $(div).append(img, number[0]);
+    $(div).addClass('hidden');
+    $(container).append(div);
   }
 }
 let selected = $('#select');
+//processing click on div
 $(document).ready(function() {
   $("div").click(function() {
     selected = $(this);
     //toggle all siblings of chosen div
     switcher();
   });
-
+//processing click on span
   $('span').click(function() {
      switcher();
   })
-
   function switcher() {
      $(selected).siblings().toggle("fast");
   }
-
   //changing background color of hovered element
   $("div").on({
     mouseenter: function(){
-      $(this).css("background-color", "#ddd");
+      $(this).addClass('selected');
     },
     mouseleave: function() {
-      $(this).css("background-color", "#fff");
+      $(this).removeClass('selected');
     }
   });
 });
