@@ -1,5 +1,5 @@
 const container = document.getElementById('container');
-const entity = '&#x25bc';
+const entity = '&#x25bc'; // this is triangle
 document.getElementById('down').innerHTML = entity;
 //array with names and their icons
 const names = [["Barack Obama","media/boss.png"],
@@ -9,21 +9,22 @@ const names = [["Barack Obama","media/boss.png"],
 ["John Doe","media/team.png"]];
 //creating dropdown but don't display it
 function createHidden() {
-  for(let number of names) {
+  for (let number of names) {
     const div = $('<div></div>');
     const img = $('<img></img>');
+    const text = $('<p></p>').text(number[0]);
     $(img).attr({"src": number[1],
-    "width": "25px"});
-    $(div).append(img, number[0]);
-    $(div).addClass('hidden');
+    "width": "30px"});
+    $(div).append(img, text);
+    $(div).addClass('hidden dropdown');
     $(container).append(div);
   }
 }
 let selected = $('#select');
 //processing click on div
 $(document).ready(function() {
-  $("div").click(function() {
-    selected = $(this);
+  $('.dropdown').click(function() {
+   selected = $(this);
     //toggle all siblings of chosen div
     switcher();
   });
@@ -31,16 +32,29 @@ $(document).ready(function() {
   $('span').click(function() {
      switcher();
   })
-  function switcher() {
-     $(selected).siblings().toggle("fast");
-  }
+
   //changing background color of hovered element
-  $("div").on({
-    mouseenter: function(){
+  $('.dropdown').on({
+    mouseenter: function() {
       $(this).addClass('selected');
     },
     mouseleave: function() {
-      $(this).removeClass('selected');
+      $(this).removeClass('selected')
     }
   });
 });
+
+//processing click not on dropdown
+$(document).mouseup(function (e) {
+    const container = $('.container');
+    if (container.has(e.target).length === 0) {
+      $(selected).siblings('.dropdown').hide('fast');
+      $('.container').removeClass('active');
+    }
+});
+
+function switcher() {
+   $(selected).siblings('.dropdown').toggle('fast');
+   $('.container').toggleClass('active');
+   selected.toggleClass('current');
+}
