@@ -59,7 +59,7 @@ img {
   color: #bbb;
 }
 
-.selected.current {
+.selected.closed {
   background-color: white;
 }
 
