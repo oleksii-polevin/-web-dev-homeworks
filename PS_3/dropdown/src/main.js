@@ -32,10 +32,20 @@ $(document).ready(function() {
     //toggle all siblings of chosen div
     switcher();
   });
-//processing click on black triangle
-  $('span').click(function() {
-     switcher();
-  })
+
+//processing actions on  triangle
+  $('#down').on({
+    click: function() {
+      switcher();
+    },
+    mouseenter: function() {
+      $('#down').addClass('gray');
+    },
+    mouseleave: function() {
+      $('#down').removeClass('gray')
+    }
+  });
+
 
   //changing background color of hovered element
   $('.dropdown').on({
