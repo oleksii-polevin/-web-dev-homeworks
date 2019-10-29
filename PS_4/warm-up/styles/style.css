@@ -19,6 +19,7 @@ span {
 margin: 0;
 }
 
+
 .chessBoard {
   display: flex;
   flex-direction: row;

@@ -10,8 +10,7 @@
 		<?php
 		session_start();
 		isset($_SESSION['counter']) ? $_SESSION['counter'] += 1 : $_SESSION['counter'] = 1;
-		$num = $_SESSION['counter'];
-		echo "<div><h1>number of visits: $num</h1></div>";
+		echo "<div><h1>number of visits: $_SESSION[counter]</h1></div>";
 		 ?>
 		 <hr>
 	</div>
@@ -70,6 +69,34 @@
 		</div>
 	</div>
 	<hr>
-
+  <div class="sumOf">
+		<h2>Sum of digits from given number</h2>
+		<form class="" action="upload.php" method="post">
+			<input type="text" name="sumOfDigits" placeholder="enter number">
+			<button type="submit" action="upload.php" name="button">Go!</button>
+			<?php
+			if(isset($_SESSION['sumOfDigits'])) {
+				$result = $_SESSION['sumOfDigits'];
+				echo "<div>$result</div>";
+			}
+			?>
+		</form>
+		<div class="">
+			<h2>Array</h2>
+			<form class="" action="upload.php" method="get">
+				<button type="submit"name="button">Create Array</button>
+				<p><?php
+				if(isset($_SESSION['array'])) {
+				$array = $_SESSION['array'];
+				foreach ($array as $item => $value) {
+					echo "<div> $item: ";
+					echo implode(",", $value);
+					echo "</div>";
+				}
+			}
+				?></p>
+			</form>
+		</div>
+  </div>
 </body>
 </html>
