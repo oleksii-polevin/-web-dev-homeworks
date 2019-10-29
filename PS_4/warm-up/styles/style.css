@@ -1,0 +1,26 @@
+* {
+  margin-bottom: 15px;
+  background-color: lightgray;
+}
+h1 {
+  text-transform: capitalize;
+}
+
+div {
+  font-family: serif;
+  padding-left: 1em;
+}
+
+img {
+  width: 100px;
+}
+
+span {
+margin: 0;
+}
+
+.chessBoard {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}

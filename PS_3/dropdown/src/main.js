@@ -23,6 +23,10 @@ function createHidden() {
   }
 }
 
+$(document).ready(function() {
+  createHidden();
+})
+//default select
 let selected = $('#select');
 
 //processing click on div
