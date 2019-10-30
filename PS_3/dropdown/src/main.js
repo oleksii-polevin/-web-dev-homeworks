@@ -1,6 +1,6 @@
 //adding black trinagle
-const entity = '&#x25bc';
-document.getElementById('down').innerHTML = entity;
+const entityTriangle = '&#x25bc';
+document.getElementById('down').innerHTML = entityTriangle;
 
 //array with names and their icons
 const names = [['Barack Obama', 'media/boss.png'],
@@ -10,7 +10,7 @@ const names = [['Barack Obama', 'media/boss.png'],
 ['John Doe','media/team.png']];
 
 //creating dropdown but don't display it
-function createHidden() {
+function createDropdown() {
   for (let number of names) {
     const div = $('<div></div>');
     const img = $('<img></img>');
@@ -24,7 +24,7 @@ function createHidden() {
 }
 
 $(document).ready(function() {
-  createHidden();
+  createDropdown();
 })
 //default select
 let selected = $('#select');
@@ -34,13 +34,13 @@ $(document).ready(function() {
   $('.dropdown').click(function() {
    selected = $(this);
     //toggle all siblings of chosen div
-    switcher();
+    dropdownSwitcher();
   });
 
 //processing actions on  triangle
   $('#down').on({
     click: function() {
-      switcher();
+      dropdownSwitcher();
     },
     mouseenter: function() {
       $('#down').addClass('gray');
@@ -49,7 +49,6 @@ $(document).ready(function() {
       $('#down').removeClass('gray')
     }
   });
-
 
   //changing background color of hovered element
   $('.dropdown').on({
@@ -67,12 +66,12 @@ $(document).mouseup(function (e) {
     const container = $('#container');
     if (container.has(e.target).length === 0) {
       $(selected).siblings('.dropdown').hide('fast');
-      $('#container').removeClass('active');
+      $(container).removeClass('active');
       $(selected).addClass('closed');
     }
 });
 
-function switcher() {
+function dropdownSwitcher() {
    $(selected).siblings('.dropdown').toggle('fast');
    $('#container').toggleClass('active');
    $(selected).toggleClass('closed');
