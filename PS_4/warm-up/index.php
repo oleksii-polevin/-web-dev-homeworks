@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -8,11 +10,10 @@
 <body>
 	<div class="count">
 		<?php
-		session_start();
 		isset($_SESSION['counter']) ? $_SESSION['counter'] += 1 : $_SESSION['counter'] = 1;
 		echo "<div><h1>number of visits: $_SESSION[counter]</h1></div>";
-		 ?>
-		 <hr>
+		?>
+		<hr>
 	</div>
 	<div class="first">
 		<h2>The sum of numbers from -1000 to 1000</h2>
@@ -50,10 +51,13 @@
 		</form>
 		<?php
 		if(isset($_SESSION['output_files'])) {
-		echo ($_SESSION['output_files']);
-	}
+			echo ($_SESSION['output_files']);
+		}
 		?>
 		<hr>
+	</div>
+	<div>
+		<h2>chess board</h2>
 	</div>
 	<div class="chessBoard">
 		<form class="" action='upload.php' method="post">
@@ -63,13 +67,13 @@
 		<div>
 			<?php
 			if(isset($_SESSION['chess'])) {
-			echo $_SESSION['chess'];
-		}
-			 ?>
+				echo $_SESSION['chess'];
+			}
+			?>
 		</div>
 	</div>
 	<hr>
-  <div class="sumOf">
+	<div class="sumOf">
 		<h2>Sum of digits from given number</h2>
 		<form class="" action="upload.php" method="post">
 			<input type="text" name="sumOfDigits" placeholder="enter number">
@@ -81,12 +85,14 @@
 			}
 			?>
 		</form>
-		<div class="">
-			<h2>Array</h2>
-			<form class="" action="upload.php" method="get">
-				<button type="submit"name="button">Create Array</button>
-				<p><?php
-				if(isset($_SESSION['array'])) {
+		<hr>
+	</div>
+	<div class="array">
+		<h2>Array</h2>
+		<form class="" action="upload.php" method="get">
+			<button type="submit" name="array">Create Array</button>
+			<p><?php
+			if(isset($_SESSION['array'])) {
 				$array = $_SESSION['array'];
 				foreach ($array as $item => $value) {
 					echo "<div> $item: ";
@@ -94,9 +100,24 @@
 					echo "</div>";
 				}
 			}
-				?></p>
-			</form>
-		</div>
-  </div>
+			?></p>
+		</form>
+		<hr>
+	</div>
+	<div class="textarea">
+		<form action="upload.php" method="post">
+			<h2>Enter some text</h2>
+			<textarea name="textarea" rows="8" cols="80"></textarea>
+			<br>
+			<button type="submit" name="button">Go!</button>
+		</form>
+		<?php
+		if(isset($_SESSION['textarea'])) {
+				foreach ($_SESSION['textarea'] as $key => $value) {
+				echo "<div>$key $value</div>";
+			}
+		}
+		?>
+	</div>
 </body>
 </html>

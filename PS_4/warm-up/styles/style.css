@@ -2,7 +2,8 @@
   margin-bottom: 15px;
   background-color: lightgray;
 }
-h1 {
+
+h1, h2 {
   text-transform: capitalize;
 }
 
@@ -19,9 +20,26 @@ span {
 margin: 0;
 }
 
+textarea {
+  resize: none;
+}
 
 .chessBoard {
   display: flex;
   flex-direction: row;
   margin: 0;
+}
+
+.files {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+.files div {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
