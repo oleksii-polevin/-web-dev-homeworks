@@ -15,7 +15,7 @@
 		?>
 		<hr>
 	</div>
-	<div class="first">
+	<div>
 		<h2>The sum of numbers from -1000 to 1000</h2>
 		<?php
 		$sum = 0;
@@ -27,7 +27,7 @@
 		?>
 		<hr>
 	</div>
-	<div class="">
+	<div>
 		<h2>The sum of numbers from -1000 to 1000 which ends on 2, 3 or 7</h2>
 		<?php
 		$regex = '/(2|3|7)$/';
@@ -89,13 +89,13 @@
 	</div>
 	<div class="array">
 		<h2>Array</h2>
-		<form class="" action="upload.php" method="get">
+		<form  action="upload.php" method="get">
 			<button type="submit" name="array">Create Array</button>
 			<p><?php
 			if(isset($_SESSION['array'])) {
 				$array = $_SESSION['array'];
 				foreach ($array as $item => $value) {
-					echo "<div> $item: ";
+					echo "<div> <span style='color: blue; font-size: 1.5em'>$item:</span> ";
 					echo implode(",", $value);
 					echo "</div>";
 				}
@@ -114,7 +114,7 @@
 		<?php
 		if(isset($_SESSION['textarea'])) {
 				foreach ($_SESSION['textarea'] as $key => $value) {
-				echo "<div>$key $value</div>";
+				echo "<div><span style='color: blue; font-size: 1.5em'>$key</span> $value</div>";
 			}
 		}
 		?>

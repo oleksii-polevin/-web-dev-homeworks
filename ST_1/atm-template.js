@@ -97,6 +97,7 @@ const ATM = {
   logout() {
     this.isAuth = false;
     this.currentUser = {};
+    this.index = -1;
     this.logs.push('user logged out');
     console.log('logged out');
   }
