@@ -16,7 +16,7 @@ const ATM = {
   auth(id, pin) {
     // allowed only one user,
     //attempt of authorization during current session will be banned
-    if(!this.isAuth) {
+    if (!this.isAuth) {
       const index = this.users.findIndex(item => item.id === id && item.pin === pin);
       const current = this.users[index];
       if(current) {
@@ -52,23 +52,23 @@ const ATM = {
       console.log('Auth first');
       return;
     }
-    if(amount <= this.cash && amount <= this.currentUser.debet) {
+    if (amount <= this.cash && amount <= this.currentUser.debet) {
       this.currentUser.debet -= amount;
       this.cash -= amount;
       this.users[this.index] = this.currentUser;
       this.logs.push('given out cash ' + amount);
       console.log('take you cash');
-    } else if(amount <= this.cash && amount > this.currentUser.debet) {
+    } else if (amount <= this.cash && amount > this.currentUser.debet) {
       this.logs.push('attempt to get exceeding sum ' + amount);
       console.log('not enough money on your ballance');
-    }  else  if(amount > this.cash) {
+    }  else  if (amount > this.cash) {
       this.logs.push('attempt to get sum: ' + amount + ' that exceeds ATM limits');
       console.log('The sum is too big');
     }
   },
   // load cash - available for user only
   loadCash(amount) {
-    if(this.isAuth) {
+    if (this.isAuth) {
       this.currentUser.debet += amount;
       this.cash += amount; // probably ATM is working this way
       this.users[this.index] = this.currentUser;
@@ -79,7 +79,7 @@ const ATM = {
   },
   // load cash to ATM - available for admin only - EXTENDED
   loadAtmCash(amount) {
-    if(this.isAuth && this.currentUser.type === 'admin') {
+    if (this.isAuth && this.currentUser.type === 'admin') {
       this.cash += amount;
       const msg = 'ATM supplied ' + amount;
       this.logs.push(msg);
@@ -89,7 +89,7 @@ const ATM = {
   },
   // get cash actions logs - available for admin only - EXTENDED
   getLogs() {
-    if(this.isAuth && this.currentUser.type === 'admin') {
+    if (this.isAuth && this.currentUser.type === 'admin') {
       this.logs.forEach(item => console.log(item));
     }
   },
