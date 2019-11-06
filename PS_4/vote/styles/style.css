@@ -35,3 +35,6 @@ label:hover {
   font-size: 2.5em;
   color: red;
 }
+.button {
+  margin-left: 500px;
+}

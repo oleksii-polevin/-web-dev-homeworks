@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="styles/style.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -26,5 +27,8 @@
   </head>
   <body>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div class="button">
+       <button type="button" name="button"onclick="window.location.href='index.php'">back</button>
+    </div>
   </body>
 </html>

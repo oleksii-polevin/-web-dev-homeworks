@@ -27,9 +27,9 @@ session_start();
       <input type="radio" name="language" id="c++" value="c++">
       <label for="c++">c++</label>
     </div>
-    <hr>
+    <br>
     <input type="text" name="name" value="" placeholder="enter your name">
-    <hr>
+    <br>
     <button type="submit">Submit</button>
     <br>
   </form>
