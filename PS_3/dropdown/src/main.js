@@ -1,21 +1,25 @@
 //adding black trinagle
 const entityTriangle = '&#x25bc';
 document.getElementById('down').innerHTML = entityTriangle;
+//default select
+let selected = $('#select');
 
-//array with names and their icons
-const names = [['Barack Obama', 'media/boss.png'],
-['Frankenstein','media/doctor.png'],
-['Lewis Carroll','media/user.png'],
-['Brendan Eich','media/user2.png'],
-['John Doe','media/team.png']];
+const NAMES = [
+  {name: 'Barack Obama',  image: 'media/boss.png'},
+  {name: 'Frankenstein',  image: 'media/doctor.png'},
+  {name: 'Lewis Carroll', image: 'media/user.png'},
+  {name: 'Brendan Eich',  image: 'media/user2.png'},
+  {name: 'John Doe',      image: 'media/team.png'}
+];
+
 
 //creating dropdown but don't display it
 function createDropdown() {
-  for (let number of names) {
+  for (let item of NAMES) {
     const div = $('<div></div>');
     const img = $('<img></img>');
-    const text = $('<p></p>').text(number[0]);
-    $(img).attr({"src": number[1],
+    const text = $('<p></p>').text(item.name);
+    $(img).attr({"src": item.image,
     "width": "30px"});
     $(div).append(img, text);
     $(div).addClass('hidden dropdown');
@@ -25,19 +29,13 @@ function createDropdown() {
 
 $(document).ready(function() {
   createDropdown();
-})
-//default select
-let selected = $('#select');
-
-//processing click on div
-$(document).ready(function() {
   $('.dropdown').click(function() {
-   selected = $(this);
+    selected = $(this);
     //toggle all siblings of chosen div
     dropdownSwitcher();
   });
 
-//processing actions on  triangle
+  //processing actions on  triangle
   $('#down').on({
     click: function() {
       dropdownSwitcher();
@@ -59,20 +57,21 @@ $(document).ready(function() {
       $(this).removeClass('selected')
     }
   });
-});
 
-//processing click not on dropdown
-$(document).mouseup(function (e) {
+  //processing click not on dropdown
+  $(document).mouseup(function (e) {
     const container = $('#container');
     if (container.has(e.target).length === 0) {
-      $(selected).siblings('.dropdown').hide('fast');
+      $(selected).siblings('.dropdown').hide();
       $(container).removeClass('active');
       $(selected).addClass('closed');
     }
-});
+  });
 
-function dropdownSwitcher() {
-   $(selected).siblings('.dropdown').toggle('fast');
-   $('#container').toggleClass('active');
-   $(selected).toggleClass('closed');
-}
+  //toggles dropdown
+  function dropdownSwitcher() {
+    $(selected).siblings('.dropdown').toggle();
+    $('#container').toggleClass('active');
+    $(selected).toggleClass('closed');
+  }
+});
