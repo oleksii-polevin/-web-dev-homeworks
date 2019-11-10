@@ -11,7 +11,7 @@ if(!$_GET['language']) {
   $json_object = file_get_contents('results.json');
   //parametr true return json as associative array
   $data = json_decode($json_object, true);
-  $data['Language'] = 'number of voters';
+  $data['Programming Language'] = 'number of voters';
   $data[$_GET['language']] += 1;
   $json_object = json_encode($data);
   $_SESSION['result'] = $json_object;

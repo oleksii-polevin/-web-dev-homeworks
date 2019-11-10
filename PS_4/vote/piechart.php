@@ -18,7 +18,7 @@
         txt = Object.entries(txt);
         var data = google.visualization.arrayToDataTable(txt);
         var options = {
-          title: 'Languages'
+          title: 'Programming Languages'
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
