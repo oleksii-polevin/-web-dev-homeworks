@@ -93,7 +93,9 @@ function createArray()
     $arr[$i] = rand(0, 10);
   }
   $wrapper['original'] = $arr;
-  $arr2 = array_unique($arr);
+  sort($arr);
+  $wrapper['sorted'] = $arr;
+  $arr2 = array_unique($wrapper['sorted']);
   $wrapper['unique'] = $arr2;
   $arr_rev = array_reverse($arr2);
   $wrapper['reversed'] = $arr_rev;

@@ -17,8 +17,8 @@ const ATM = {
     // allowed only one user,
     //attempt of authorization during current session will be banned
     if (!this.isAuth) {
-      const index = this.users.findIndex(item => item.id === id && item.pin === pin);
-      const current = this.users[index];
+      const current = this.users.find(item => item.id === id && item.pin === pin);
+     // const current = this.users[index];
       if(current) {
         this.currentUser = current;
         this.isAuth = true;

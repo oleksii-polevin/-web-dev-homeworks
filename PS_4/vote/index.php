@@ -28,8 +28,6 @@ session_start();
       <label for="c++">c++</label>
     </div>
     <br>
-    <input type="text" name="name" value="" placeholder="enter your name">
-    <br>
     <button type="submit">Submit</button>
     <br>
   </form>

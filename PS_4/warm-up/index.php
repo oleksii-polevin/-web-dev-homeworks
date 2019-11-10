@@ -42,10 +42,10 @@
 		?>
 		<hr>
 	</div>
-	<div class="upload">
-		<form action="upload.php" method="post" enctype="multipart/form-data">
-			Select file to upload:
-			<input type="file" class="upload" name="fileToUpload" id="fileToUpload">
+	<div class="logic">
+		<form action="logic.php" method="post" enctype="multipart/form-data">
+			Select file to logic:
+			<input type="file" class="logic" name="fileToUpload" id="fileToUpload">
 			<br>
 			<input type="submit" value="Upload" name="submit_files">
 		</form>
@@ -60,9 +60,9 @@
 		<h2>chess board</h2>
 	</div>
 	<div class="chessBoard">
-		<form class="" action='upload.php' method="post">
+		<form class="" action='logic.php' method="post">
 			<input type="text" name='chessBoard' placeholder='8x8 format'>
-			<button type="submit" action="upload.php" name="button">Go!</button>
+			<button type="submit" action="logic.php" name="button">Go!</button>
 		</form>
 		<div>
 			<?php
@@ -75,9 +75,9 @@
 	<hr>
 	<div class="sumOf">
 		<h2>Sum of digits from given number</h2>
-		<form class="" action="upload.php" method="post">
+		<form class="" action="logic.php" method="post">
 			<input type="text" name="sumOfDigits" placeholder="enter number">
-			<button type="submit" action="upload.php" name="button">Go!</button>
+			<button type="submit" action="logic.php" name="button">Go!</button>
 			<?php
 			if(isset($_SESSION['sumOfDigits'])) {
 				$result = $_SESSION['sumOfDigits'];
@@ -89,7 +89,7 @@
 	</div>
 	<div class="array">
 		<h2>Array</h2>
-		<form  action="upload.php" method="get">
+		<form  action="logic.php" method="get">
 			<button type="submit" name="array">Create Array</button>
 			<p><?php
 			if(isset($_SESSION['array'])) {
@@ -105,7 +105,7 @@
 		<hr>
 	</div>
 	<div class="textarea">
-		<form action="upload.php" method="post">
+		<form action="logic.php" method="post">
 			<h2>Enter some text</h2>
 			<textarea name="textarea" rows="8" cols="80"></textarea>
 			<br>
