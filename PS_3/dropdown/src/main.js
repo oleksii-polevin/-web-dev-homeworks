@@ -17,12 +17,10 @@ const NAMES = [
 function createDropdown() {
   for (let item of NAMES) {
     const div = $('<div></div>');
-    const img = $('<img></img>');
-    const text = $('<p></p>').text(item.name);
-    $(img).attr({"src": item.image,
+    const img = $('<img></img>').attr({"src": item.image,
     "width": "30px"});
-    $(div).append(img, text);
-    $(div).addClass('hidden dropdown');
+    const text = $('<p></p>').text(item.name);
+    $(div).append(img, text).addClass('hidden dropdown');
     $('#container').append(div);
   }
 }
