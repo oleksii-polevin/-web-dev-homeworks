@@ -27,7 +27,7 @@ function createPreview() {
       src: API_URL + SMALL_SIZE + item,
       alt: num
     });
-    num++;
+    num++; // just for consistency
     const li = $('<li></li>').append(img);
     preview.append(li);
   }
@@ -47,14 +47,14 @@ $('.slider-previews').click(function(e) {
 $(document).keydown(function(e) {
   if(e.keyCode === 39) { // 39 - right 37 - left
     current.removeClass('current');
-    hasNext(current.next())
+    isPresent(current.next())
     ? current = current.next().addClass('current')
     : current = $('li').first().addClass('current');
     slider(current.find('img')[0]);
   }
   else if (e.keyCode === 37) {
     current.removeClass('current');
-    hasNext(current.prev())
+    isPresent(current.prev())
     ? current = current.prev().addClass('current')
     : current = $('li').last().addClass('current');
     slider(current.find('img')[0]);
@@ -70,6 +70,6 @@ const slider = element => {
 };
 
 // checks following or preceding preview img existence
-const hasNext = (element) => {
+const isPresent = (element) => {
   return element.length > 0;
 };
