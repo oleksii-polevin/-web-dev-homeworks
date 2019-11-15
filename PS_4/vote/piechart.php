@@ -28,7 +28,7 @@
   <body>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
     <div class="button">
-       <button type="button" name="button"onclick="window.location.href='index.php'">back</button>
+       <button type="button" name="button"onclick="window.location.href='index.php'">I want to change my choise</button>
     </div>
   </body>
 </html>
