@@ -46,18 +46,10 @@ $('.slider-previews').click(function(e) {
 // select img from keyboard
 $(document).keydown(function(e) {
   if(e.keyCode === 39) { // 39 - right 37 - left
-    current.removeClass('current');
-    isPresent(current.next())
-    ? current = current.next().addClass('current')
-    : current = $('li').first().addClass('current');
-    slider(current.find('img')[0]);
+    keyReact(current.next(), $('li').first());
   }
   else if (e.keyCode === 37) {
-    current.removeClass('current');
-    isPresent(current.prev())
-    ? current = current.prev().addClass('current')
-    : current = $('li').last().addClass('current');
-    slider(current.find('img')[0]);
+    keyReact(current.prev(), $('li').last());
   }
 });
 
@@ -73,3 +65,11 @@ const slider = element => {
 const isPresent = (element) => {
   return element.length > 0;
 };
+
+function keyReact(followingElem, edgeElem) {
+  current.removeClass('current');
+  isPresent(followingElem)
+  ? current = followingElem.addClass('current')
+  : current = edgeElem.addClass('current');
+  slider(current.find('img')[0]);
+}
