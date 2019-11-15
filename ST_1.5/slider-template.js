@@ -36,7 +36,7 @@ function createPreview() {
 // select img on click
 $('.slider-previews').click(function(e) {
   // react only on images
-  if($(e.target).is('img')) {
+  if ($(e.target).is('img')) {
     current.removeClass('current');
     current = $(e.target).closest('li').addClass('current');
     slider(e.target);
@@ -45,7 +45,7 @@ $('.slider-previews').click(function(e) {
 
 // select img from keyboard
 $(document).keydown(function(e) {
-  if(e.keyCode === 39) { // 39 - right 37 - left
+  if (e.keyCode === 39) { // 39 - right 37 - left
     keyReact(current.next(), $('li').first());
   }
   else if (e.keyCode === 37) {
@@ -62,7 +62,7 @@ const slider = element => {
 };
 
 // checks following or preceding preview img existence
-const isPresent = (element) => {
+const isPresent = element => {
   return element.length > 0;
 };
 
