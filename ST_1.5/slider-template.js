@@ -19,18 +19,18 @@ $(document).ready(function() {
   current = $('li').first().addClass('current');
 });
 
-function createPreview() {
+const createPreview = () => {
   const preview = $('.slider-previews');
-  let num = 0;
-  for(let item of IMAGES) {
+  let num = 0; // just for consistency
+  IMAGES.forEach(item => {
     const img = $('<img/>', {
       src: API_URL + SMALL_SIZE + item,
       alt: num
     });
-    num++; // just for consistency
+    num++;
     const li = $('<li></li>').append(img);
     preview.append(li);
-  }
+  });
 };
 
 // select img on click
@@ -53,8 +53,9 @@ $(document).keydown(function(e) {
   }
 });
 
-// changes big image
-// element = chosen small img
+/* changes big image
+ element = chosen small img
+ */
 const slider = element => {
   const bigImg = $('.slider-current').children(":first");
   const src = element.src.replace(SMALL_SIZE, BIG_SIZE);
@@ -66,10 +67,11 @@ const isPresent = element => {
   return element.length > 0;
 };
 
-function keyReact(followingElem, edgeElem) {
+// processing reaction on '<' and '>' keys
+const keyReact = (followingElem, edgeElem) => {
   current.removeClass('current');
   isPresent(followingElem)
   ? current = followingElem.addClass('current')
   : current = edgeElem.addClass('current');
   slider(current.find('img')[0]);
-}
+};
