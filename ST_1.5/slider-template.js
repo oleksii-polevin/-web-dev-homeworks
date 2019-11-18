@@ -11,12 +11,15 @@ const IMAGES = [
   '?image=1039'
 ];
 
+//main image
+const bigImg = $('.slider-current').children(":first");
+
 // initialise variable for preview picture
 let current;
 
 $(document).ready(function() {
   createPreview();
-  current = $('li').first().addClass('current');
+  current = $('.imgSmall').first().addClass('current');
 });
 
 const createPreview = () => {
@@ -28,7 +31,7 @@ const createPreview = () => {
       alt: num
     });
     num++;
-    const li = $('<li></li>').append(img);
+    const li = $('<li></li>').addClass('imgSmall').append(img);
     preview.append(li);
   });
 };
@@ -57,7 +60,6 @@ $(document).keydown(function(e) {
  element = chosen small img
  */
 const slider = element => {
-  const bigImg = $('.slider-current').children(":first");
   const src = element.src.replace(SMALL_SIZE, BIG_SIZE);
   bigImg.attr('src', src);
 };
