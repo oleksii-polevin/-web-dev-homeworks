@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900|Pacifico&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: #b9c783;
+  overflow: hidden;
+}
+
+.wrapper, chatForm {
+  margin-top: 2.5em;
+  display: flex;
+  justify-content: center;
+}
+
+.colors_container {
+  display: flex;
+  align-items: stretch;
+}
+.colors {
+  padding: 5px;
+  flex-grow: 1;
+}
+
+.login, .form, .chatForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.login {
+  width: calc(100% / 3);
+  height: 70%;
+  align-items: center;
+}
+
+.login h1, .chatForm h1 {
+  margin: 1em 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 3em;
+  color: #fffecd;
+  text-transform: capitalize;
+}
+
+.form {
+  position: relative;
+}
+
+.form, input[type=text], input[type=password] {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.form-label {
+  color: #635960;
+  font-size: .7em;
+  margin: 5px 0;
+}
+
+input[type='text'], input[type='password'] {
+  background-color: #fffecd;
+  color: #635960;
+  border: none;
+  padding: 5px;
+}
+
+button[type='submit'] {
+  text-transform: capitalize;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  border: 0;
+  background-color: #635960;
+  color: #fffecd;
+  outline: none;
+}
+
+button[type='submit']::after {
+    cursor: default;
+    z-index: -1;
+    margin-top: 25px;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 400%;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    transform: skew(20deg, 353deg);
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.06), rgba(0,0,0,0.0));
+}
+#error {
+  position: absolute;
+  top: -1em;
+  left: 0;
+  color: red;
+}
+
+.chatForm {
+  width: calc(100% / 2.5);
+  min-width: 300px;
+  height: 160%;
+  align-items: center;
+}
+
+.msg {
+  padding: 2%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  width: 96%;
+  height: 15em;
+  max-height: 15em;
+  background-color: #fffecd;
+  overflow-y: scroll;
+  margin-bottom: .5em;
+}
+
+.msg span {
+  font-weight: 900;
+}
+
+.chat {
+  width: 100%;
+}
+
+#chatMsg {
+  margin-right: 10px;
+}
+
+#chatForm {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.hidden {
+  display: none;
+}
+
+.welcome {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  color: #fffecd;
+  position: absolute;
+  top: 2em;
+  left: 38%;
+  width: 40%;
+  height: 10%;
+}
