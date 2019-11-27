@@ -14,8 +14,9 @@ function prepareCurrentMsg($data)
 {
   $response = '';
   if(!empty($data)) {
+    $current = strtotime(date("H:i:s"));
       foreach($data as $key => $value) {
-    if(checkTime($key) === true) {
+    if(checkTime($key, $current) === true) {
       $value = makeEmoji($value);
       $response .= "[" . $key . "] " . $value .  "<br>";
     }
@@ -24,13 +25,11 @@ function prepareCurrentMsg($data)
   return $response;
 }
 
-function checkTime($time)
+function checkTime($time, $current)
 {
-  $current = strtotime(date("H:i:s"));
-  $hourBack = $current - 3601; //
+  $hourBack = $current - 3600; //
   $date_for_check = strtotime($time);
   return $date_for_check >= $hourBack && $date_for_check <= $current;
-
 }
 
 function makeEmoji($message) {

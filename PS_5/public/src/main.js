@@ -8,6 +8,7 @@ for (let i = 0; i < 2; i++) {
   });
 };
 
+// eventListener for login page
 if(document.getElementById('form')) {
   const form = document.getElementById('form');
   form.addEventListener('submit', function(e) {
@@ -24,7 +25,7 @@ function sendLoginData() {
     data: msg,
     success: function(data) {
       if(data.indexOf('error') > -1 ) {
-        const START = 6;
+        const START = 6; // skip word error which marking wrong inputs
         const response = data.substring(START);
         $('#error').html(response);
       } else {
@@ -99,9 +100,9 @@ const addListenerToChatForm = () => {
   });
 };
 
-// repeted checks of new messages
+// repeted checks for new messages
 function check() {
-  const c = setInterval(request, 50000);
+  const c = setInterval(request, 10000);
 };
 
 // welcome message
