@@ -24,7 +24,8 @@ function sendLoginData() {
     data: msg,
     success: function(data) {
       if(data.indexOf('error') > -1 ) {
-        const response = data.substring(6);
+        const START = 6;
+        const response = data.substring(START);
         $('#error').html(response);
       } else {
         $('#wrapper').replaceWith(data);
@@ -106,5 +107,5 @@ function check() {
 // welcome message
 const welcome = () => {
   $(".welcome").removeClass('hidden');
-  $('.welcome').hide(5000);
+  $('.welcome').hide(10000);
 }

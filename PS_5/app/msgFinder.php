@@ -29,10 +29,8 @@ function checkTime($time)
   $current = strtotime(date("H:i:s"));
   $hourBack = $current - 3601; //
   $date_for_check = strtotime($time);
-  if($date_for_check >= $hourBack && $date_for_check <= $current) {
-    return true;
-  }
-  return false;
+  return $date_for_check >= $hourBack && $date_for_check <= $current;
+
 }
 
 function makeEmoji($message) {

@@ -21,6 +21,7 @@ body {
   display: flex;
   align-items: stretch;
 }
+
 .colors {
   padding: 5px;
   flex-grow: 1;
@@ -141,12 +142,12 @@ button[type='submit']::after {
 }
 
 .welcome {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Pacifico', cursive;
   font-size: 1.2em;
   color: #fffecd;
   position: absolute;
   top: 2em;
-  left: 38%;
+  left: 40%;
   width: 40%;
   height: 10%;
 }
