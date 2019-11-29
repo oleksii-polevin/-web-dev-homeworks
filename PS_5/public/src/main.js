@@ -15,7 +15,7 @@ if(document.getElementById('form')) {
     e.preventDefault();
     sendLoginData();
   });
-}
+};
 
 function sendLoginData() {
   const msg = $('#form').serialize();
@@ -32,8 +32,7 @@ function sendLoginData() {
         $('#wrapper').replaceWith(data);
         scrolling();
         addListenerToChatForm();
-        welcome();
-        check();
+        welcome(); // disappearing welcome message
       }
     },
     error: function(xhr) {
@@ -41,6 +40,10 @@ function sendLoginData() {
     }
   });
 };
+
+// flag used for launch function checkNewMsg() only once
+// it is necessary because this function intself used setInterval method
+let onlyOnce = true;
 
 // sending messages
 function sendMsg() {
@@ -55,7 +58,10 @@ function sendMsg() {
     success: function(data) {
       $('.msg').html(data);
       scrolling();
-      check();
+      if(onlyOnce) { // avoiding multiple initialisation of this function
+        checkNewMsg();
+        onlyOnce = false;
+      }
     },
 
     error: function(xhr) {
@@ -72,7 +78,7 @@ const request = () => {
   $.ajax({
     type: 'POST',
     url: 'app/msgHandler.php',
-    data: 'message=',
+    data: 'message=', // empty
     success: function(data) {
       $('.msg').html(data);
       scrolling();
@@ -83,30 +89,47 @@ const request = () => {
   });
 };
 
-// scroll to bottom
+// used for preventing scroll when mouse is upon messages area
+let mouseOverMsgArea;
+
 const scrolling = () => {
   const elem = document.getElementById("msg");
-  const y = elem.scrollHeight;
-  elem.scrollTo({ top: y , behavior: 'smooth' });
+    const y = elem.scrollHeight;
+    if(!mouseOverMsgArea) {
+    elem.scrollTo({ top: y, behavior: 'smooth' });
+  }
+};
+
+// checkNewMsg whether or not mouse over chat position
+function checkMouse() {
+  $("#msg").on({
+    mouseover: function() {
+      mouseOverMsgArea = true;
+    },
+    mouseout: function() {
+      mouseOverMsgArea = false;
+    }
+  });
 };
 
 // bind listener to chat
-const addListenerToChatForm = () => {
+function addListenerToChatForm() {
   const chatForm = document.getElementById('chatForm');
   chatForm.addEventListener('submit', function(e) {
     e.preventDefault();
     sendMsg();
+    checkMouse();
     $('#chatMsg').val("");
   });
 };
 
 // repeted checks for new messages
-function check() {
+function checkNewMsg() {
   const c = setInterval(request, 10000);
 };
 
 // welcome message
 const welcome = () => {
   $(".welcome").removeClass('hidden');
-  $('.welcome').hide(10000);
+  $('.welcome').hide(15000);
 }

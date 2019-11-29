@@ -10,11 +10,11 @@ if(!$user || !$password) {
   echo "error Fill all fields";
   return;
 }
-$data = file_get_contents($filename);
-$data = json_decode($data, true);
+$usersLoginData = file_get_contents($filename);
+$usersLoginData = json_decode($usersLoginData, true);
 
 // check current users
-foreach ($data as $key => $value) {
+foreach ($usersLoginData as $key => $value) {
   if($key === $user) {
     if($value !== $password) {
       echo 'error Wrong password';
@@ -28,7 +28,7 @@ foreach ($data as $key => $value) {
 }
 //new user
 $_SESSION['user'] = $user;
-$data[$user] = $password;
-$data = json_encode($data);
-file_put_contents($filename, $data);
+$usersLoginData[$user] = $password;
+$usersLoginData = json_encode($usersLoginData);
+file_put_contents($filename, $usersLoginData);
 header('Location: chat.php');
