@@ -33,11 +33,8 @@ if(isset($_POST['chessBoard'])) {
   for($i = 0; $i < $arr[0]; $i++) {
     $makeBoard .= "<div class='chessBoard'>";
     for($j = 0; $j < $arr[1]; $j++) {
-      if($i % 2 === $j % 2) {
-        $makeBoard .= "<span style='width: 40px; height: 40px; background-color: black'></span>";
-      } else {
-        $makeBoard .= "<span style='width: 40px; height: 40px; background-color: white'></span>";
-      }
+      $i % 2 === $j % 2 ? $color = 'black' : $color = 'white';
+      $makeBoard .= "<span style='width: 40px; height: 40px; background-color: {$color}'></span>";
     }
     $makeBoard .="</div>";
   }
