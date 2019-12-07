@@ -21,7 +21,7 @@ function sendLoginData() {
   const msg = $('#form').serialize();
   $.ajax({
     type: 'POST',
-    url: 'app/login.php',
+    url: '../app/login.php',
     data: msg,
     success: function(data) {
       if(data.indexOf('error') > -1 ) {
@@ -52,7 +52,7 @@ function sendMsg() {
 
   $.ajax({
     type: 'POST',
-    url: 'app/msgHandler.php',
+    url: '../app/msgHandler.php',
     data: msg,
 
     success: function(data) {
@@ -77,7 +77,7 @@ function sendMsg() {
 const request = () => {
   $.ajax({
     type: 'POST',
-    url: 'app/msgHandler.php',
+    url: '../app/msgHandler.php',
     data: 'message=', // empty
     success: function(data) {
       $('.msg').html(data);
@@ -125,7 +125,7 @@ function addListenerToChatForm() {
 
 // repeted checks for new messages
 function checkNewMsg() {
-  const c = setInterval(request, 10000);
+  setInterval(request, 10000);
 };
 
 // welcome message
