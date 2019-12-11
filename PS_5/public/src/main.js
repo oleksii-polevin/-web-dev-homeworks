@@ -125,14 +125,15 @@ function addListenerToChatForm() {
 
 const TIME_CONSTATNS = {
     request: 10000, // millisec
-    hideWelcome:20000, // millisec
+    checkOldMsg: 55000,
+    hideWelcome: 20000,
     removeMsg: 60 // min
 };
 
 // repeted checks for new messages
 function checkAndRemoveMsg() {
     setInterval(request, TIME_CONSTATNS.request);
-    setInterval(removeOldMsg, TIME_CONSTATNS.request);
+    setInterval(removeOldMsg, TIME_CONSTATNS.checkOldMsg);
 };
 
 // welcome message
