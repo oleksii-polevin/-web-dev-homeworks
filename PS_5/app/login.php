@@ -1,15 +1,29 @@
 <?php
 session_start();
 
+define('MAX_LENGTH', '20');
+
 $filename = 'data/users.json';
-$user = $_POST['name'];
+$user = strip_tags($_POST['name']);
 $password = $_POST['password'];
 
-// check invalid results
-if(!$user || !$password) {
-    echo "error Fill all fields";
-    return;
-}
+
+    // check invalid results
+    if(!$user || !$password) {
+        echo "error Fill all fields";
+        return;
+    }
+
+    if(strlen($user) > MAX_LENGTH) {
+        echo 'error Name is too long';
+        return;
+    }
+
+    if(strlen($password) > MAX_LENGTH) {
+        echo 'error Password is too long';
+        return;
+    }
+
 $usersLoginData = file_get_contents($filename);
 $usersLoginData = json_decode($usersLoginData, true);
 
@@ -19,13 +33,14 @@ foreach ($usersLoginData as $key => $value) {
         if($value !== $password) {
             echo 'error Wrong password';
             return;
-        } else {
-            $_SESSION['user'] = $user;
-            header('Location: chat.php');
-            return;
         }
+        $_SESSION['user'] = $user;
+        header('Location: chat.php');
+        return;
+        
     }
 }
+
 //new user
 $_SESSION['user'] = $user;
 $usersLoginData[$user] = $password;

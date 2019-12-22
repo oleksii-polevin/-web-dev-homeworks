@@ -8,12 +8,36 @@ for (let i = 0; i < 2; i++) {
     });
 };
 
-// eventListener for login page
-if(document.getElementById('form')) {
-    const form = document.getElementById('form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        sendLoginData();
+window.onload = function() {
+    reloader();
+};
+
+$('.logout').click(function() {
+    $.ajax({
+        type: 'POST',
+        url: '../app/router.php',
+        data: 'logout=true',
+    });
+    stopCheckingMsg();
+    location.reload();
+});
+
+const reloader = () => {
+    $.ajax({
+        type: 'POST',
+        url: '../app/router.php',
+        data: 'reload=true',
+        success: function(response) {
+            if(response.indexOf('chatForm') > -1) {
+                makeChat(response);
+            } else {
+                document.getElementById('form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    sendLoginData();
+                });
+                $('.logout').addClass('hidden');
+            }
+        }
     });
 };
 
@@ -29,10 +53,7 @@ function sendLoginData() {
                 const response = data.substring(START);
                 $('#error').html(response);
             } else {
-                $('#wrapper').replaceWith(data);
-                scrolling();
-                addListenerToChatForm();
-                welcome(); // disappearing welcome message
+                makeChat(data);
             }
         },
         error: function(xhr) {
@@ -41,33 +62,45 @@ function sendLoginData() {
     });
 };
 
-// flag used for launch function checkAndRemoveMsg() only once
-// it is necessary because this function intself used setInterval method
-let onlyOnce = true;
+const makeChat = (response) => {
+    $('#wrapper').html(response);
+    $('.logout').removeClass('hidden');
+    addListenerToChat();
+    checkAndRemoveMsg();
+    scrolling();
+    welcome();
+
+};
+
+function addListenerToChat() {
+    const chatForm = document.getElementById('chatForm');
+    chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        sendMsg();
+        checkMouse();
+        $('#chatMsg').val("");
+    });
+};
 
 // sending messages
-function sendMsg() {
+const sendMsg = () => {
 
-    const msg = $('#chatForm').serialize();
+    const msg = $('#chatMsg').val();
 
-    $.ajax({
-        type: 'POST',
-        url: '../app/msgHandler.php',
-        data: msg,
-
-        success: function(data) {
-            $('#msg').append(data);
-            scrolling();
-            if(onlyOnce) { // avoiding multiple initialisation of this function
-                checkAndRemoveMsg();
-                onlyOnce = false;
+    if(msg) {
+        $.ajax({
+            type: 'POST',
+            url: '../app/msgHandler.php',
+            data: 'message=' + msg,
+            success: function(data) {
+                $('#msg').append(data);
+                scrolling();
+            },
+            error: function(xhr) {
+                alert('error: ' + xhr.status);
             }
-        },
-
-        error: function(xhr) {
-            alert('error: ' + xhr.status);
-        }
-    });
+        });
+    }
 };
 
 /* empty request in order to obtain newest messages
@@ -101,7 +134,7 @@ const scrolling = () => {
 };
 
 // check whether or not mouse over chat position
-function checkMouse() {
+const checkMouse = () => {
     $("#msg").on({
         mouseover: function() {
             mouseOverMsgArea = true;
@@ -112,16 +145,6 @@ function checkMouse() {
     });
 };
 
-// bind listener to chat
-function addListenerToChatForm() {
-    const chatForm = document.getElementById('chatForm');
-    chatForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        sendMsg();
-        checkMouse();
-        $('#chatMsg').val("");
-    });
-};
 
 const TIME_CONSTATNS = {
     request: 10000, // millisec
@@ -130,11 +153,22 @@ const TIME_CONSTATNS = {
     removeMsg: 60 // min
 };
 
+// used to prevent multiple initialisation of the following function
+let firstTime = true;
+
 // repeted checks for new messages
-function checkAndRemoveMsg() {
-    setInterval(request, TIME_CONSTATNS.request);
-    setInterval(removeOldMsg, TIME_CONSTATNS.checkOldMsg);
+const checkAndRemoveMsg = () => {
+    if(firstTime) {
+        setInterval(request, TIME_CONSTATNS.request);
+        setInterval(removeOldMsg, TIME_CONSTATNS.checkOldMsg);
+        firstTime = false;
+    }
 };
+
+const stopCheckingMsg = () => {
+    clearInterval(request);
+    clearInterval(removeOldMsg);
+}
 
 // welcome message
 const welcome = () => {
@@ -149,7 +183,7 @@ const getTime = () => {
     return result;
 };
 
-function removeOldMsg() {
+const removeOldMsg = () => {
     const currentTime = getTime();
     const elements = document.getElementsByClassName('time');
     Array.from(elements).forEach(elem => {

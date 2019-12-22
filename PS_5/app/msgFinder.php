@@ -16,7 +16,7 @@ function prepareCurrentMsg($data)
         return;
     }
     $response = '';
-    // first response
+    // first response or after page reload
     if(!isset($_SESSION['last_msg_index'])) {
         $current = strtotime(date("H:i:s"));
         foreach($data as $key => $value) {
@@ -56,7 +56,7 @@ function checkTime($time, $current)
 }
 
 function makeEmoji($msg) {
-    $msg = str_replace(":)", "🙂" , $msg);
-    $msg = str_replace(":(", "😞", $msg);
+    $msg = str_replace(":)", "<img src='images/happy.png'>" , $msg);
+    $msg = str_replace(":(", "<img src='images/sad.png'>", $msg);
     return $msg;
 }

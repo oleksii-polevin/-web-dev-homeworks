@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat&display=swap');
+
+@font-face {
+    font-family: "BlackJack";
+    src: url("../fonts/BLACKJAR.TTF");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 107vh;
+    background-image: url(../img/blue-pattern.jpg);
+    background-repeat: repeat;
+    color: white;
+    position: relative;
+}
+.top {
+    position: relative;
+    height: 10vw;
+
+}
+.logo {
+   position: absolute;
+   text-align: center;
+   font-family: 'Kaushan script';
+   color: #00b3e8;
+   font-size: 3em;
+   top: 0;
+   left: 12.5vw;
+   width:7.80vw;
+   height:7.80vw;
+   background-color: white;
+   box-shadow: 10px 10px #00b3e8;
+}
+
+.menu {
+    position: absolute;
+    top: 36px;
+    right: 159px;
+    height: 30px;
+    width: 40px;
+}
+.menu-item {
+    display: block;
+    width: 31px;
+    height: 4px;
+    background-color: white;
+    margin: 2px 4px;
+}
+
+.header-title, .button-download {
+    text-align: right;
+    margin: 25px 160px 20px;
+    font-weight: 400;
+}
+
+.button-download {
+    float: right;
+    color: white;
+    text-transform: uppercase;
+    background-color: inherit;
+    padding: 20px 35px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: "BlackJack";
+    font-size: 70px;
+
+}
+
+h2 {
+    font-family: 'Montserrat';
+    font-size: 31px;
+}
+
+.phone-image {
+    background-image: url(../img/iphone.png);
+    position: absolute;
+    bottom: 0;
+    left: 230px;
+    width: 230px;
+    height: 270px;
+    background-repeat: no-repeat;
+}
+
+.about-perth {
+    position: relative;
+    height: 107vh;
+    width: 99vw;
+    display: flex;
+    background-color: #f4f4f4;
+    color: #9b9b9b;
+    flex-direction: column;
+}
+
+.about-item {
+    margin-left: 160px;
+    margin-bottom: 25px;
+    width: 550px;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+h2.about-item {
+    color: black;
+    font-size: 35px;
+    font-weight:lighter;
+    margin-top: 140px;
+}
+
+.blockquote {
+    border-left: 5px solid #00aee0;
+    padding-left: 15px;
+    font-style: italic;
+}
+
+.hello-button {
+    color: #00b18f;
+    text-transform: uppercase;
+    width: 170px;
+    height: 50px;
+    margin-top: 45px;
+    border: 2px solid #00b18f;
+}
+
+.ipad-image {
+    background-image: url(../img/ipad.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+    height: 500px;
+}
