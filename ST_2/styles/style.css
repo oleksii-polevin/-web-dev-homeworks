@@ -10,6 +10,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+button {
+    cursor: pointer;
+}
 
 .header {
     height: 107vh;
@@ -54,7 +57,7 @@
 
 .header-title, .button-download {
     text-align: right;
-    margin: 25px 160px 20px;
+    margin: 25px 160px 18px;
     font-weight: 400;
 }
 
@@ -73,7 +76,6 @@
 h1 {
     font-family: "BlackJack";
     font-size: 70px;
-
 }
 
 h2 {
@@ -94,7 +96,6 @@ h2 {
 .about-perth {
     position: relative;
     height: 107vh;
-    width: 99vw;
     display: flex;
     background-color: #f4f4f4;
     color: #9b9b9b;
@@ -106,12 +107,12 @@ h2 {
     margin-bottom: 25px;
     width: 550px;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 h2.about-item {
     color: black;
-    font-size: 35px;
+    font-size: 33px;
     font-weight:lighter;
     margin-top: 140px;
 }
@@ -126,8 +127,8 @@ h2.about-item {
     color: #00b18f;
     text-transform: uppercase;
     width: 170px;
-    height: 50px;
-    margin-top: 45px;
+    height: 58px;
+    margin-top: 35px;
     border: 2px solid #00b18f;
 }
 
@@ -139,4 +140,172 @@ h2.about-item {
     right: 0;
     width: 350px;
     height: 500px;
+}
+
+.dribble {
+    background-color: white;
+    position: relative;
+    height: 106vh;
+}
+
+.dribble-container {
+    width: 450px;
+    float: right;
+    margin-top: 98px;
+    margin-right: 120px;
+}
+
+h2.dribble-item {
+    font-size: 35px;
+}
+
+.dribble-item {
+    font-family: 'Montserrat';
+    margin-bottom: 35px;
+    margin-left: 10px;
+    color: #424d5f;
+}
+
+.dribble-button {
+    width: 225px;
+    color: #ff4b8c;
+    border: 2px solid #ff4b8c;
+    border-radius: 3px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.devices-image {
+    position: absolute;
+    left: -80px;
+    bottom: 0;
+    background-image: url(../img/devices.png);
+    background-repeat: no-repeat;
+    width: 850px;
+    height: 380px;
+}
+
+.donation {
+    height: 53vh;
+    background-image: url('../img/green-pattern.jpg');
+    background-repeat: repeat;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    justify-content: center;
+}
+
+.donation-header {
+    font-size: 35px;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    margin-bottom: 40px;
+}
+
+.donation-button {
+    background-color: inherit;
+    color: inherit;
+    border: 2px solid white;
+    height: 60px;
+    width: 225px;
+}
+
+.fa-beer {
+    margin-left: 15px;
+    transform: scaleX(-1);
+}
+
+.contacts {
+    height: 80vh;
+    background-color: #f4f4f4;
+}
+
+.socials-padding {
+    content: ' ';
+    display: block;
+    height: 240px;
+}
+
+.socials {
+    margin: 0 auto;
+    display: flex;
+    width: 400px;
+}
+
+.socials a {
+    width: 56px;
+    height: 56px;
+    color: #545454;
+    border: 3px solid #545454;
+    border-radius: 50%;
+    position: relative;
+    margin-left: 34px;
+    transition: all 0.2s linear;
+}
+
+.socials a i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 21px;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.subscription {
+    width: 500px;
+    margin: 65px auto 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.subscription p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #545454;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+.subscription form {
+    display: flex;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 12px 18px;
+    align-items: center;
+}
+
+.subscription input {
+    border: none;
+    font-size: 14px;
+    outline: none;
+    color: #545454;
+}
+
+.subscription input::placeholder {
+    color: #d3d3d3;
+    border-right: 2px solid #f4f4f4;
+}
+
+.subscription button {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    margin-left: 12px;
+}
+
+.subscription button i {
+    color: #4eacdd;
+}
+footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20vw;
 }
