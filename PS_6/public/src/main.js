@@ -68,6 +68,7 @@ const makeChat = (response) => {
     addListenerToChat();
     checkAndRemoveMsg();
     scrolling();
+    checkMouse();
     welcome();
 
 };
@@ -77,7 +78,6 @@ function addListenerToChat() {
     chatForm.addEventListener('submit', function(e) {
         e.preventDefault();
         sendMsg();
-        checkMouse();
         $('#chatMsg').val("");
     });
 };

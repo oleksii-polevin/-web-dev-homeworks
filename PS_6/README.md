@@ -1,5 +1,5 @@
-==========================================================================================
-For database creation launch install/install_db.php;
-it is possible that you may need to change connection settings (servername, password etc.);
-they are stored in file config/config.php;
-==========================================================================================
+
+For database creation launch install/install_db.php.
+It is possible that connection settings (servername, password etc.) have to be adjusted first.
+They are stored at file config/config.php.
+After that application is ready to use.
