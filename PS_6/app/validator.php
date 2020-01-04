@@ -1,17 +1,12 @@
 <?php
 require_once '../config/config.php';
+require_once 'connect.php';
 
-
-class Login {
+class Validator {
 
     public function checkUser($user, $password) {
 
-        $conn = self::connect();
-
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            exit();
-        }
+        $conn = Connection::connect();
 
         $db_name = DATA_BASE['login_table'];
         $sql = "SELECT name, password FROM $db_name WHERE name='$user'";
@@ -29,12 +24,6 @@ class Login {
         }
         mysqli_close($conn);
         self::openChat($user);
-
-    }
-
-    private function connect() {
-        return mysqli_connect(DATA_BASE['servername'], DATA_BASE['username'],
-        DATA_BASE['password'], DATA_BASE['db_name']);
     }
 
     private function createUser($user, $password, $conn) {

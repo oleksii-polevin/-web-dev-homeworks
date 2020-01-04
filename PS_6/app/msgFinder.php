@@ -1,19 +1,15 @@
 <?php
 session_start();
 require_once '../config/config.php';
+require_once 'connect.php';
 date_default_timezone_set ("Europe/Kiev");
 
 class Messanger {
 
-    private function connect() {
-        return mysqli_connect(DATA_BASE['servername'], DATA_BASE['username'],
-        DATA_BASE['password'], DATA_BASE['db_name']);
-    }
-
     private function getMsg()
     {
         $data = [];
-        $conn = self::connect();
+        $conn = Connection::connect();
         $message_table = DATA_BASE['message_table'];
 
         if(!isset($_SESSION['last_msg_index'])) {
@@ -35,13 +31,12 @@ class Messanger {
 
     public function saveMsg($msg) {
         $user = $_SESSION['user'];
-        $conn = self::connect();
+        $conn = Connection::connect();
         $message_table = DATA_BASE['message_table'];
         $sql = "INSERT INTO $message_table VALUES (NULL, '$user', NOW(), '$msg')";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
     }
-
 
     public function prepareCurrentMsg()
     {

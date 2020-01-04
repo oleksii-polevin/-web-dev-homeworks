@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'db_login.php';
-
+require_once 'validator.php';
+require_once 'connect.php';
 define('MAX_LENGTH', '20');
 
 $user = strip_tags($_POST['name']);
@@ -23,4 +23,4 @@ if(strlen($password) > MAX_LENGTH) {
     return;
 }
 
-Login::checkUser($user, $password);
+Validator::checkUser($user, $password);

@@ -10,12 +10,26 @@
     padding: 0;
     box-sizing: border-box;
 }
+h1 {
+    font-family: "BlackJack";
+    font-size: 70px;
+}
+
+h2 {
+    font-family: 'Montserrat';
+    font-size: 31px;
+}
+
 button {
     cursor: pointer;
 }
 
+.wrapper {
+    background-color: #f4f4f4;
+}
+
 .header {
-    height: 107vh;
+    height: 650px;
     background-image: url(../img/blue-pattern.jpg);
     background-repeat: repeat;
     color: white;
@@ -47,6 +61,7 @@ button {
     height: 30px;
     width: 40px;
 }
+
 .menu-item {
     display: block;
     width: 31px;
@@ -73,16 +88,6 @@ button {
     cursor: pointer;
 }
 
-h1 {
-    font-family: "BlackJack";
-    font-size: 70px;
-}
-
-h2 {
-    font-family: 'Montserrat';
-    font-size: 31px;
-}
-
 .phone-image {
     background-image: url(../img/iphone.png);
     position: absolute;
@@ -95,7 +100,7 @@ h2 {
 
 .about-perth {
     position: relative;
-    height: 107vh;
+    height: 650px;
     display: flex;
     background-color: #f4f4f4;
     color: #9b9b9b;
@@ -217,19 +222,12 @@ h2.dribble-item {
     transform: scaleX(-1);
 }
 
-.contacts {
-    height: 80vh;
+.contacts-container {
+    height: 400px;
     background-color: #f4f4f4;
 }
-
-.socials-padding {
-    content: ' ';
-    display: block;
-    height: 240px;
-}
-
 .socials {
-    margin: 0 auto;
+    margin: 240px auto 0;
     display: flex;
     width: 400px;
 }
@@ -280,7 +278,6 @@ h2.dribble-item {
 .subscription input {
     border: none;
     font-size: 14px;
-    outline: none;
     color: #545454;
 }
 
@@ -302,10 +299,34 @@ h2.dribble-item {
 .subscription button i {
     color: #4eacdd;
 }
+
 footer {
-    position: sticky;
-    left: 0;
-    bottom: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 20vw;
+    height: 100px;
+}
+
+footer p {
+    margin-top: 25px;
+    font-size: 14px;
+}
+footer p a {
+    text-decoration: none;
+    color: #4eacdd;
+}
+.page-up {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+}
+.fa-angle-up {
+    margin-top: 10px;
 }
