@@ -103,10 +103,7 @@ const sendMsg = () => {
     }
 };
 
-/* empty request in order to obtain newest messages
-may be this is not the optimal method for requesting them,
-but it is simplier to ask php instead of parsing json in js
-*/
+/* empty request in order to obtain newest messages */
 const request = () => {
     $.ajax({
         type: 'POST',
@@ -172,7 +169,7 @@ const stopCheckingMsg = () => {
 
 // welcome message
 const welcome = () => {
-    $(".welcome").removeClass('hidden');
+    $('.welcome').removeClass('hidden');
     $('.welcome').hide(TIME_CONSTATNS.hideWelcome);
 };
 

@@ -1,12 +1,11 @@
 <?php
 include 'msgFinder.php';
-$data = getMsg();
+$data = Messanger::getMsg();
 ?>
-
     <div class='chatForm'>
         <div class='hidden welcome'><h2>Welcome<span id='username'> <?= $_SESSION['user']?></span></h2></div>
         <h1>easy chat</h1>
-        <div class='msg' id='msg'><?= prepareCurrentMsg($data) ?></div>
+        <div class='msg' id='msg'><?= Messanger::prepareCurrentMsg($data) ?></div>
         <br>
         <div class='chat'>
             <form id='chatForm'>
