@@ -10,6 +10,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 h1 {
     font-family: "BlackJack";
     font-size: 70px;
@@ -226,6 +227,7 @@ h2.dribble-item {
     height: 400px;
     background-color: #f4f4f4;
 }
+
 .socials {
     margin: 240px auto 0;
     display: flex;
@@ -258,6 +260,7 @@ h2.dribble-item {
     flex-direction: row;
     align-items: center;
 }
+
 .subscription p {
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
@@ -313,10 +316,12 @@ footer p {
     margin-top: 25px;
     font-size: 14px;
 }
+
 footer p a {
     text-decoration: none;
     color: #4eacdd;
 }
+
 .page-up {
     width: 35px;
     height: 35px;
@@ -327,6 +332,7 @@ footer p a {
     bottom: 30px;
     right: 60px;
 }
+
 .fa-angle-up {
     margin-top: 10px;
 }

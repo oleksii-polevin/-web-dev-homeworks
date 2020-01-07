@@ -1,0 +1,98 @@
+@media only screen and (max-width: 600px) {
+    .header {
+        height: 400px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+
+    .phone-image {
+        display: none;
+    }
+
+    /* ------------------------- */
+
+    .ipad-image {
+        display: none;
+    }
+
+    .about-item {
+        margin: 20px 25px;
+        width: 400px;
+    }
+
+    .hello-button {
+        margin: 30px 25px;
+    }
+
+    /* -------------------------------- */
+
+    .dribble {
+        height: 500px;
+    }
+
+    .dribble-container {
+        margin-right: 0;
+    }
+
+    .devices-image {
+        display: none;
+    }
+}
+
+/* =================================================================== */
+
+@media only screen and (max-width: 900px) {
+
+    .logo {
+        font-size: 1.8em;
+    }
+
+    .header-title, .button-download {
+        margin: 25px 100px 18px;
+        font-size: 1.5em;
+    }
+
+    .menu {
+        right: 100px;
+    }
+
+    .phone-image {
+        height: 140px;
+        left: 130px;
+    }
+
+    /* ---------------------------------------------------------- */
+
+    .about-item {
+        margin: 20px 35px;
+        width: 420px;
+    }
+
+    .hello-button {
+        margin: 30px 35px;
+    }
+    .ipad-image {
+        width: 80px;
+    }
+
+    /* ----------------------------------------------------------- */
+
+    .devices-image {
+        height: 150px;
+    }
+}
+
+/* =================================================================== */
+
+@media only screen and (max-width: 1200px) {
+    .ipad-image {
+        width: 150px;
+    }
+    .devices-image {
+        height: 200px;
+    }
+}
