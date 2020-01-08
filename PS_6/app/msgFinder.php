@@ -22,7 +22,7 @@ class Messanger {
 
         $res = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_assoc($res)) {
-            $data[$row['id']] = [$row['time'], $row['author'], $row['message']];
+            $data[$row['id']] = $row;
         }
 
         mysqli_close($conn);
@@ -57,9 +57,9 @@ class Messanger {
 
     private function createOneMsg($message) {
         //split date to y-m-d and time fragments
-        $time = preg_split('/\s/', $message[0]);
+        $time = preg_split('/\s/', $message['time']);
         return "<p>[<span class='time'>" . $time[1] . "</span>]  <span class='user'>"
-        . $message[1] .  " : </span>" . self::makeEmoji($message[2]) . "</p>";
+        . $message['author'] .  " : </span>" . self::makeEmoji($message['message']) . "</p>";
     }
 
     private function makeEmoji($msg) {
