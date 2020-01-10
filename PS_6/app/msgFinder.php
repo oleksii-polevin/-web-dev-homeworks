@@ -6,7 +6,7 @@ date_default_timezone_set ("Europe/Kiev");
 
 class Messanger {
 
-    private function getMsg()
+    public function getMsg()
     {
         $data = [];
         $conn = Connection::connect();

@@ -8,25 +8,24 @@ for (let i = 0; i < 2; i++) {
     });
 };
 
+// chat or login
 window.onload = function() {
-    reloader();
+    pageLoader('reload=true');
 };
 
+// send signal to the server to destroy session
 $('.logout').click(function() {
-    $.ajax({
-        type: 'POST',
-        url: '../app/router.php',
-        data: 'logout=true',
-    });
+    pageLoader('logout=true');
     stopCheckingMsg();
     location.reload();
 });
 
-const reloader = () => {
+// depending on user existance(by php session) chat or login will be shown
+const pageLoader = route => {
     $.ajax({
         type: 'POST',
         url: '../app/router.php',
-        data: 'reload=true',
+        data: route,
         success: function(response) {
             if(response.indexOf('chatForm') > -1) {
                 makeChat(response);
@@ -62,13 +61,12 @@ function sendLoginData() {
     });
 };
 
-const makeChat = (response) => {
+const makeChat = response => {
     $('#wrapper').html(response);
     $('.logout').removeClass('hidden');
     addListenerToChat();
     checkAndRemoveMsg();
     scrolling();
-    checkMouse();
     welcome();
 
 };
@@ -77,21 +75,19 @@ function addListenerToChat() {
     const chatForm = document.getElementById('chatForm');
     chatForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        sendMsg();
-        $('#chatMsg').val("");
+        sendMsg($('#chatMsg').val());
+        checkMouse();
+        $('#chatMsg').val('');
     });
 };
 
 // sending messages
-const sendMsg = () => {
-
-    const msg = $('#chatMsg').val();
-
+const sendMsg = msg => {
     if(msg) {
         $.ajax({
             type: 'POST',
             url: '../app/msgHandler.php',
-            data: 'message=' + msg,
+            data: 'message=' + msg.trim(),
             success: function(data) {
                 $('#msg').append(data);
                 scrolling();
@@ -103,20 +99,9 @@ const sendMsg = () => {
     }
 };
 
-/* empty request in order to obtain newest messages */
+/* ancillary request in order to obtain newest messages */
 const request = () => {
-    $.ajax({
-        type: 'POST',
-        url: '../app/msgHandler.php',
-        data: 'message=', // empty
-        success: function(data) {
-            $('.msg').append(data);
-            scrolling();
-        },
-        error: function(xhr) {
-            alert('error: ' + xhr.status);
-        }
-    });
+    sendMsg('__SERVICE__MSG__');
 };
 
 // used for preventing scroll when mouse is upon messages area
@@ -145,8 +130,8 @@ const checkMouse = () => {
 
 const TIME_CONSTATNS = {
     request: 10000, // millisec
-    checkOldMsg: 100000,
-    hideWelcome: 20000,
+    checkOldMsg: 60000, //1min
+    hideWelcome: 20000, //20sec
     removeMsg: 60 // min
 };
 
@@ -169,7 +154,7 @@ const stopCheckingMsg = () => {
 
 // welcome message
 const welcome = () => {
-    $(".welcome").removeClass('hidden');
+    $('.welcome').removeClass('hidden');
     $('.welcome').hide(TIME_CONSTATNS.hideWelcome);
 };
 

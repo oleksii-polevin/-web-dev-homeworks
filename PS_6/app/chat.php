@@ -9,7 +9,7 @@ include_once 'msgFinder.php';
         <br>
         <div class='chat'>
             <form id='chatForm'>
-                <input type='text' id='chatMsg' name='message'>
+                <input type='text' id='chatMsg' name='message' maxlength="500">
                 <button type='submit' id='send'>send</button>
                 <br>
             </form>
