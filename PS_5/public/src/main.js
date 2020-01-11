@@ -20,16 +20,16 @@ $('.logout').click(function() {
     location.reload();
 });
 
-// depending on user existance(by php session) chat or login will be shown
+// show chat or login forms
 const pageLoader = route => {
     $.ajax({
         type: 'POST',
         url: '../app/router.php',
         data: route,
         success: function(response) {
-            if(response.indexOf('chatForm') > -1) {
+            if(response.indexOf('chatForm') > -1) { // page reloaded, current user
                 makeChat(response);
-            } else {
+            } else {  // page loaded first time or user pressed logout button
                 document.getElementById('form').addEventListener('submit', function(e) {
                     e.preventDefault();
                     sendLoginData();
@@ -83,7 +83,7 @@ function addListenerToChat() {
 
 // sending messages
 const sendMsg = msg => {
-    if(msg) {
+    if(msg) { // skip empty messages
         $.ajax({
             type: 'POST',
             url: '../app/msgHandler.php',
@@ -130,9 +130,9 @@ const checkMouse = () => {
 
 const TIME_CONSTATNS = {
     request: 10000, // millisec
-    checkOldMsg: 60000, //1min
-    hideWelcome: 20000, //20sec
-    removeMsg: 60 // min
+    checkOldMsg: 60000, // 1min
+    hideWelcome: 20000, // 20sec
+    timeToRemoveMsg: 60 // minutes
 };
 
 // used to prevent multiple initialisation of the following function
@@ -160,7 +160,7 @@ const welcome = () => {
 
 const getTime = () => {
     const time = new Date();
-    const result = Number(time.getHours()) * TIME_CONSTATNS.removeMsg
+    const result = Number(time.getHours()) * TIME_CONSTATNS.timeToRemoveMsg
     + Number(time.getMinutes());
     return result;
 };
@@ -170,8 +170,8 @@ const removeOldMsg = () => {
     const elements = document.getElementsByClassName('time');
     Array.from(elements).forEach(elem => {
         const timeStamp = elem.innerHTML.split(':');
-        const msgTime = Number(timeStamp[0]) * TIME_CONSTATNS.removeMsg + Number(timeStamp[1]);
-        if (currentTime - msgTime > TIME_CONSTATNS.removeMsg) {
+        const msgTime = Number(timeStamp[0]) * TIME_CONSTATNS.timeToRemoveMsg + Number(timeStamp[1]);
+        if (currentTime - msgTime > TIME_CONSTATNS.timeToRemoveMsg) {
             $(elem).removeClass('time');
             $(elem).closest('p').addClass('hidden');
         }
