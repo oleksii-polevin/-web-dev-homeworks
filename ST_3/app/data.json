@@ -1,19 +1,19 @@
 {
     "1": {
-        "top": 272,
-        "left": 1015,
+        "top": 102,
+        "left": 209,
         "text": "test",
         "id": "1"
     },
     "2": {
-        "top": 190,
-        "left": 446,
+        "top": 153,
+        "left": 569,
         "text": "another test",
         "id": "2"
     },
     "3": {
-        "top": 199,
-        "left": 1373,
+        "top": 66,
+        "left": 901,
         "text": "Loooooooooooooooooooooooooooooooooooooooooooooong test!",
         "id": "3"
     }
