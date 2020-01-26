@@ -1,6 +1,7 @@
 <?php
+session_start();
 require_once '../config/config.php';
-require_once 'connect.php';
+require_once 'Connection.php';
 
 class Validator {
 

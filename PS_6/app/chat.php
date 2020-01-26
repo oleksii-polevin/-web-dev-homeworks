@@ -1,5 +1,5 @@
 <?php
-include_once 'msgFinder.php';
+include_once 'Messanger.php';
 ?>
 
     <div class='chatForm'>

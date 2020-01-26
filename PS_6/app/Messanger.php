@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../config/config.php';
-require_once 'connect.php';
+require_once 'Connection.php';
 date_default_timezone_set ("Europe/Kiev");
 
 class Messanger {

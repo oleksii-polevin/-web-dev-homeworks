@@ -1,5 +1,5 @@
 <?php
-include 'msgFinder.php';
+include_once 'Messanger.php';
 
 $msg = strip_tags($_POST['message']);
 $user = $_SESSION['user'];

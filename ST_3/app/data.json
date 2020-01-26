@@ -1,20 +1,14 @@
 {
     "1": {
-        "top": 102,
-        "left": 209,
-        "text": "test",
+        "top": 126,
+        "left": 262,
+        "text": "hello",
         "id": "1"
     },
     "2": {
-        "top": 153,
-        "left": 569,
-        "text": "another test",
+        "top": 132,
+        "left": 832,
+        "text": "crap!",
         "id": "2"
-    },
-    "3": {
-        "top": 66,
-        "left": 901,
-        "text": "Loooooooooooooooooooooooooooooooooooooooooooooong test!",
-        "id": "3"
     }
 }

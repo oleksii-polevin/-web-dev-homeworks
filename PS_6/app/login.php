@@ -1,7 +1,5 @@
 <?php
-session_start();
-require_once 'validator.php';
-require_once 'connect.php';
+
 define('MAX_LENGTH', '20');
 
 $user = strip_tags($_POST['name']);
@@ -22,5 +20,7 @@ if(strlen($password) > MAX_LENGTH) {
     echo 'error Password is too long';
     return;
 }
+
+require_once 'Validator.php';
 
 Validator::checkUser($user, $password);
