@@ -2,7 +2,7 @@
 
 define('MAX_LENGTH', '20');
 
-$user = strip_tags($_POST['name']);
+$user = strip_tags(trim($_POST['name']));
 $password = $_POST['password'];
 
 // check invalid results
