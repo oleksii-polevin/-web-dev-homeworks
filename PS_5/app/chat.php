@@ -1,5 +1,5 @@
 <?php
-include 'msgFinder.php';
+include 'Messanger.php';
 $data = Messanger::getMsg();
 ?>
     <div class='chatForm'>
