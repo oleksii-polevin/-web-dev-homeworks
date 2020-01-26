@@ -1,1 +1,20 @@
-{"1":{"top":108,"left":169,"text":"hello world","id":"1"},"2":{"top":151,"left":613,"text":"test","id":"2"}}
+{
+    "1": {
+        "top": 272,
+        "left": 1015,
+        "text": "test",
+        "id": "1"
+    },
+    "2": {
+        "top": 190,
+        "left": 446,
+        "text": "another test",
+        "id": "2"
+    },
+    "3": {
+        "top": 199,
+        "left": 1373,
+        "text": "Loooooooooooooooooooooooooooooooooooooooooooooong test!",
+        "id": "3"
+    }
+}

@@ -8,19 +8,19 @@ if(isset($_GET['page_loaded'])) {
 }
 
 if(isset($_POST['message'])) {
-    $new_msg = json_decode($_POST['message'], true); // object
+    $new_msg = json_decode($_POST['message'], true);
     $new_msg = sanitateData($new_msg);
     $previous_msg = getMsg();
     $key = $new_msg['id'];
     $previous_msg[$key] = $new_msg;
-    file_put_contents('data.json', json_encode($previous_msg));
+    file_put_contents('data.json', json_encode($previous_msg, JSON_PRETTY_PRINT));
 }
 
 if(isset($_GET['delete'])) {
     $msg = getMsg();
     unset($msg[$_GET['delete']]);
-    file_put_contents('data.json', json_encode($msg));
-    if(empty($msg)) echo 'empty'; //start counting from beginning
+    file_put_contents('data.json', json_encode($msg, JSON_PRETTY_PRINT));
+    if(empty($msg)) echo 'empty'; //start counting from the beginning
 }
 
 function getMsg()

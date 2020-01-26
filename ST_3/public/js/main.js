@@ -37,7 +37,8 @@ $(screen).on('dblclick', function(e) {
     }
 }).on('dragstop', function(e) {
     const elem = e.target;
-    const value = $(elem).html();
+    let value;
+    active ? value = $(elem).find(':input').val() : value = $(elem).html();
     const info = collectInfo(elem, value);
     saveResults(info);
 })
@@ -53,33 +54,32 @@ function createElem(id, top, left, value) {
         addInput(elem);
     }
 }
-//
+
 function addInput(elem) {
     active = true;
-    const initial = $(elem).text(); // obtain initial text
-    // creating input with initial value
-    const input = $(`<input type='text' value='${initial}' ${MAX_LEN}>`);
+    blur = false;
+    const initialValue = $(elem).text();
+    const input = $(`<input type='text' value='${initialValue}' ${MAX_LEN}>`);
     $(elem).html(input);
     input.focus();
-    input.keyup(function(e) {
+    input.on('keyup', function(e) {
         active = false;
-        const value = input.val().trim();
-
         if (e.keyCode === ENTER) {
+            const value = input.val().trim();
             if(value) {
                 const info = collectInfo(elem, value);
                 input.remove();
-                $(elem).text(value);
                 saveResults(info);
+                $(elem).text(value);
             } else {
                 deleteRes($(elem).attr('id'));
                 $(elem).remove();
             }
 
         } else if (e.keyCode === ESC) {
-            if (initial) {
+            if (initialValue) {
                 input.remove();
-                $(elem).text(initial);
+                $(elem).text(initialValue);
             } else {
                 $(elem).remove();
             }
