@@ -57,7 +57,6 @@ function createElem(id, top, left, value) {
 
 function addInput(elem) {
     active = true;
-    blur = false;
     const initialValue = $(elem).text();
     const input = $(`<input type='text' value='${initialValue}' ${MAX_LEN}>`);
     $(elem).html(input);
@@ -75,7 +74,6 @@ function addInput(elem) {
                 deleteRes($(elem).attr('id'));
                 $(elem).remove();
             }
-
         } else if (e.keyCode === ESC) {
             if (initialValue) {
                 input.remove();
