@@ -3,6 +3,7 @@ session_start();
 require_once '../config/config.php';
 require_once 'Connection.php';
 
+/* validates user */
 class Validator {
 
     public function checkUser($user, $password) {
