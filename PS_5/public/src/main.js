@@ -83,7 +83,7 @@ function addListenerToChat() {
 
 // sending messages
 const sendMsg = msg => {
-    if(msg) { // skip empty messages
+    if(msg.trim()) { // skip empty messages
         $.ajax({
             type: 'POST',
             url: '../app/msgHandler.php',
@@ -129,7 +129,7 @@ const checkMouse = () => {
 
 
 const TIME_CONSTATNS = {
-    request: 10000, // millisec
+    request: 5000, // millisec
     checkOldMsg: 60000, // 1min
     hideWelcome: 20000, // 20sec
     timeToRemoveMsg: 60 // minutes
