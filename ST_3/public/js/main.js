@@ -61,9 +61,9 @@ function addInput(elem) {
     const input = $(`<input type='text' value='${initialValue}' ${MAX_LEN}>`);
     $(elem).html(input);
     input.focus();
-    input.on('keyup', function(e) {
+    input.on('keyup focusout', function(e) {
         active = false;
-        if (e.keyCode === ENTER) {
+        if (e.keyCode === ENTER || e.type === 'focusout') {
             const value = input.val().trim();
             if(value) {
                 const info = collectInfo(elem, value);
@@ -74,7 +74,7 @@ function addInput(elem) {
                 deleteRes($(elem).attr('id'));
                 $(elem).remove();
             }
-        } else if (e.keyCode === ESC) {
+        } else if (e.keyCode === ESC || e.type === 'focusout') {
             if (initialValue) {
                 input.remove();
                 $(elem).text(initialValue);
