@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: #394165;
-    color: #fff;
+    background-color: #64b8e6;
+    color: black;
 }
 
 header {
@@ -20,12 +20,12 @@ header {
 }
 
 nav {
-    background-color: #1a4f95;
+    background-color: #64b8e6;
     overflow: hidden;
 }
 
 nav a {
-    color: #fff;
+    color: black;
     text-align: center;
     padding: 5px 0;
     width: 33%;
@@ -36,7 +36,7 @@ nav a {
 }
 
 nav a.active {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #bbb;
 }
 
 .container {
@@ -59,12 +59,12 @@ nav a.active {
 
 .weather-icon {
     width: 100%;
-    padding: 0 15%;
+    padding: 5%;
 }
 
 .now {
     text-align: center;
-    background-color: #3469af;
+    background-color: #64b8e6;
 }
 
 .now .date {
@@ -78,7 +78,7 @@ nav a.active {
 }
 
 .hourly-forecast {
-    border-bottom: 2px solid #30395a;
+    border-bottom: 2px solid #bbb;
     line-height: 3;
 }
 
@@ -102,7 +102,7 @@ nav a.active {
     max-width: 40px;
 }
 
-.forecast-icon svg {
+.forecast-icon .svg {
     width: 35px;
     transform: translateY(31%);
 }
