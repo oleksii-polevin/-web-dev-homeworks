@@ -13,6 +13,7 @@ class Database {
         return $conn;
     }
 
+    
     public function insert($input)
     {
         $input = json_decode($input, true);
@@ -20,16 +21,18 @@ class Database {
         $today = explode(' ', $result[0]['dt_txt']); // split on y-m-d and time for next selection
         $conn = self::connect();
         $check = "SELECT dt_txt FROM `forecast` WHERE dt_txt LIKE '$today[0]%'";
-        $res = mysqli_query($conn, $check);
+        $res = mysqli_query($conn, $check); // check for already stored forecast 
         $row = mysqli_fetch_assoc($res);
-        if($row === NULL) {
+        if($row === NULL) { // avoiding of storing duplicating values into database
             $sql = '';
             foreach($result as $key => $value) {
                 $dt_txt = $value['dt_txt'];
+                if(preg_match('/' . $today[0] . '/', $dt_txt)) {
                 $temperature = $value['main']['temp'];
                 $icon = $value['weather'][0]['icon'];
                 $sql .= "INSERT INTO `forecast`(`dt_txt`, `temperature`, `icon`)
                 VALUES ('$dt_txt', '$temperature', '$icon');";
+                }
             }
             mysqli_multi_query($conn, $sql);
         }

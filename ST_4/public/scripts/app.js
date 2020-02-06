@@ -43,10 +43,10 @@ const showResults = (result) => {
     $('.forecast').html('');        // 3-hourly forecast
     forecast.forEach((item) => {
         $('.container').append(createForecast(item));
-    })
-}
+    });
+};
 
-function getWeatherInfo(forecast) {
+const getWeatherInfo = (forecast) => {
     const current = new Date(forecast.list[0].dt_txt);
     let info = [forecast.list[0]];
     for(let i = 1; i < forecast.list.length; i++) {
@@ -55,12 +55,12 @@ function getWeatherInfo(forecast) {
         }
     }
     return info;
-}
+};
 
-function selectWeather(item, currentDate) {
+const selectWeather = (item, currentDate) => {
     const date = new Date(item);
     return currentDate.getDate() === date.getDate();
-}
+};
 
 const createDiv = (className) => {
     return $('<div></div>').addClass(className);
@@ -70,14 +70,14 @@ const createDate = (item) => {
     const date = item['dt_txt'].split(' '); // y-m-d and time
     const normalDate = date[1].substr(0, 5);
     return createDiv('forecast-date').text(normalDate);
-}
+};
 
 const createIcon = (item) => {
     return $('<img />', {
         src: WEATHER_API.icon.replace('__img__', item.weather[0].icon),
         alt: 'icon'
     });
-}
+};
 
 const createForecast = (item) => {
     const date = createDate(item);
@@ -88,7 +88,7 @@ const createForecast = (item) => {
     const weather = createDiv('forecast-weather').append(temperature, icon);
     const hourForecast = createDiv('hourly-forecast clearfix').append(date, weather);
     return createDiv('forecast').append(hourForecast);
-}
+};
 
 const createCurrentWeather = (item) => {
     const date = new Date(item[0].dt_txt);
@@ -101,9 +101,9 @@ const createCurrentWeather = (item) => {
     $('.current-temperature').html(`${temperature} &deg`);
     const icon = createIcon(item[0]).addClass('weather-icon');
     $('.weather-icon').html(icon);
-}
+};
 
 const insertNil = (number) => {
     parseInt(number) < 10 ? number = '0' + number : number;
     return number;
-}
+};
