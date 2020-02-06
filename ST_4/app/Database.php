@@ -3,7 +3,7 @@ include_once 'config.php';
 
 class Database {
 
-    public function connect()
+    private function connect()
     {
         $conn =  mysqli_connect(host, username, password, db_name);
         if (mysqli_connect_errno()) {
@@ -17,19 +17,22 @@ class Database {
     {
         $input = json_decode($input, true);
         $result = $input['list'];
-        $currentDay = explode(' ', $result[0]['dt_txt']); // split on y-m-d and time for next selections
-        $drop = 'TRUNCATE TABLE forecast'; // wipe out previous results
+        $today = explode(' ', $result[0]['dt_txt']); // split on y-m-d and time for next selection
         $conn = self::connect();
-        mysqli_query($conn, $drop);
-        $sql = '';
-        foreach($result as $key => $value) {
-            $dt_txt = $value['dt_txt'];
-            $temperature = $value['main']['temp'];
-            $icon = $value['weather'][0]['icon'];
-            $sql .= "INSERT INTO `forecast`(`dt_txt`, `temperature`, `icon`)
-            VALUES ('$dt_txt', '$temperature', '$icon');";
+        $check = "SELECT dt_txt FROM `forecast` WHERE dt_txt LIKE '$today[0]%'";
+        $res = mysqli_query($conn, $check);
+        $row = mysqli_fetch_assoc($res);
+        if($row === NULL) {
+            $sql = '';
+            foreach($result as $key => $value) {
+                $dt_txt = $value['dt_txt'];
+                $temperature = $value['main']['temp'];
+                $icon = $value['weather'][0]['icon'];
+                $sql .= "INSERT INTO `forecast`(`dt_txt`, `temperature`, `icon`)
+                VALUES ('$dt_txt', '$temperature', '$icon');";
+            }
+            mysqli_multi_query($conn, $sql);
         }
-        mysqli_multi_query($conn, $sql);
         mysqli_close($conn);
 
     }
@@ -38,7 +41,7 @@ class Database {
     {
         $conn = self::connect();
         $today = date('Y-m-d');
-        $sql = "SELECT * FROM `forecast` WHERE dt_txt LIKE '$today%'";
+        $sql = "SELECT DISTINCT * FROM `forecast` WHERE dt_txt LIKE '$today%'";
         $forecast = [];
         $counter = 0;
         $res = mysqli_query($conn, $sql);
